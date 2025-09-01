@@ -45,7 +45,7 @@ Copy code
 ## Contact
 For collaborations or inquiries:  
 - Website: [www.nexaforge.com](https://www.nexaforge.com) *(replace with your domain)*  
-- Email: hello@nexaforge.com  
+- Email: nexaforge87@gmail.com  
 - LinkedIn: [NexaForge](https://linkedin.com) *(replace with your link)*  
 
 ---
