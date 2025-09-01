@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "nexaforge-4368c",
+  "private_key_id": "952b82bb77fa73e32a0b9049e61b278a9f6ea404",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC7mUoSu8XEPl8u\nDDwcEKkzpuj30HN8EsMxTX3/Ph41+TRWQO4ZzFh7fsDCp9Xl9GJAZa/CIz6ZmgvT\n51qnWbqd/wx31Mly+pNiONDkyVimaR1eW89Kwhkv6biPfkQj443YKd8lSHGt7gbC\ntSrxwW/0YZmEB4CUERUEOxO+tSEDHrcF5TZ7gwy+5myK9Q+Nwh9l5GmaP8GALPL/\n8YcTONAscC2D75vE8AIbMenHHDwoAS6fvCdtM+mDkK9/S6KHdnvW5zI/mkztu2yK\nkfuGNl244s+tLkOmyYOabKtHao30Rmg2Iko/Gckbg4CMSMcjqGYya2mj71W5HQre\nk66Cm/nHAgMBAAECggEAEZn3Vjyh+KC1g3eIaEWz6nG9qAq52ylTgRu5N6qXYQ8J\ntxIOhQMkRioFYf4nVpUQZuRjkj6GUBkhBPfPDKahmNNmUxP29r/F9lBIYT72/14b\ncFAC6gu+Gz29oFEDia5/D4oWMsRSTjRoE/q1lctFetNxeO7PRJU5uJTmbF1IRKeC\n+p4iB+Aq4Iq775KRW8WVhgtzpaDIavF8YEO3vBOVZdfuyXU/VnoZus4o0VZiTlpf\ncAAY0KrezZ0joqkGWh1SLp+SNdUlY8Np1XE2o8parAweNpiTaPFBJPmjLbgJCnuH\nMfp13Znu+x1KVITlZ4yQGhs3EeOZY9fH5xTabL+MCQKBgQDdDWCstAYAxmwupO9G\nx1GyaofzJQyve8vBS9I02Vd7X7dDCIz58WoLr/OyMz6DhFAvrr01OBYwwymJSAcZ\nDYn8yf99WhQZXSwdeU0jgBALC+rQphzmFCAU5wXcL5fk8WKvX2Nzbol/Yk+wvUYr\nXzN+itGzI9IAc/qJwOEFyTw3hQKBgQDZQfQLoa152gS78yhXpQ1TzztAqjjFrInb\nKNCtSRrDxmFgqUNf2YqzOj7wx/tg7hpAlKx6sIdduN6qqHs98tbLEv5nRrjRUKlj\nQ+8eV3Vyl168LWD3l7agW/CwulkvjAEWKJF3Q8/A9S8Wt5pnn+eI1DeztOsyEms/\nV4k2oA//2wKBgQCtGIemVUYKH1ahY+g2nWfc9UzF2jJHzAHuuCe/2J2Hb5k69Zwn\nMKLgygRje3stU1PTMtrYrLW7s2d4J53fQVnXSHo3N21buzkLT2xXKzXk4I0cm6cv\nh3zjwVA2blJcJaUoPOLMhjdHN729YUlsNx1ErwGsbJVKY4dBjXbnp//uXQKBgCLq\n07NO39e2r44ZjYFQmKzAoLBK62bxzRI5JBjFqBSQ/LORYK+2AfG+ScFfEsrIWdXJ\nT1NErezlOnxJKc2SCu2GdvbYSfnyMdcvYu4IdmrdYy9xR6Vjb8mkHTH6MT1QDhim\nmoKFlo1XmqLXDWzcKVU3bmBmkmpwxWXfxsDNxuSDAoGAcW+MUx0MEjNC3Dsm7rgV\nsEDZLRwexqAIQPRgMU0yvK9xfohoIPk7HFql4ED2d2TaZtTno2sWy7sikbloYORD\nczhFrqYrADW4meXZw+drZ7+luiOneKILiLZHR92LFb0g8i4amq6m9DXwsf8BCTeB\nEbAaflc+4ssFEC5q5InFBtU=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-fbsvc@nexaforge-4368c.iam.gserviceaccount.com",
+  "client_id": "100549238876235885286",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40nexaforge-4368c.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
