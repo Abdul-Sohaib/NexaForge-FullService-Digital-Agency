@@ -428,7 +428,7 @@ const Developers = () => {
           {/* Middle Card - Sohaib */}
           <div
             ref={middleCardRef}
-            className={`flex flex-col justify-between p-6 rounded-3xl shadow-xl hover:shadow-2xl w-full 2xl:h-[25rem] lg:h-[22rem] md:h-[24rem] sm:h-[20rem] xs:h-[20rem] md:top-10  relative overflow-hidden group cursor-pointer bg-[#FFF0B5] button-55 ${window.innerWidth <= 768 ? 'max-w-sm mx-auto absolute' : ''}`}
+            className={`flex flex-col justify-between p-6 rounded-3xl shadow-xl hover:shadow-2xl w-full 2xl:h-[25rem] lg:h-[22rem] md:h-[24rem] sm:h-[20rem] xs:h-[20rem] 2xl:-mt-20 lg:-mt-20  md:top-10  relative overflow-hidden group cursor-pointer bg-[#FFF0B5] button-55 ${window.innerWidth <= 768 ? 'max-w-sm mx-auto absolute' : ''}`}
             style={getCardStyle(1)}
             onMouseEnter={() => handleCardHover(1)}
             onMouseLeave={handleCardLeave}

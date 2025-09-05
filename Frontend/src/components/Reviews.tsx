@@ -25,7 +25,8 @@ export default function Reviews() {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await axios.get('https://nexaforge-fullservice-digital-agency-1.onrender.com/api/reviews');
+        // const response = await axios.get('https://nexaforge-fullservice-digital-agency-1.onrender.com/api/reviews');
+        const response = await axios.get('http://localhost:5000/api/reviews');
         setReviews(response.data.slice(0, 8)); // Limit to 8 reviews
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (err: any) {
@@ -53,8 +54,8 @@ export default function Reviews() {
     try {
       // Get fresh Firebase ID token
       const token = await user.getIdToken();
-      const response = await axios.post(
-        'https://nexaforge-fullservice-digital-agency-1.onrender.com/api/reviews',
+      const response = await axios.post('https://nexaforge-fullservice-digital-agency-1.onrender.com/api/reviews',
+      // const response = await axios.post('http://localhost:5000/api/reviews',
         {
           userId: user.uid,
           displayName: user.displayName || 'Anonymous',
