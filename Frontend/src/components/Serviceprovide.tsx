@@ -326,12 +326,12 @@ const Serviceprovide = forwardRef<HTMLDivElement>((_props, ref) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.h2
           ref={titleRef}
-          className="text-7xl font-bold text-black text-center font-heading w-full uppercase"
+          className="2xl:text-7xl lg:text-7xl md:text-7xl sm:text-4xl xs:text-4xl font-bold text-black text-center font-heading w-full uppercase"
           initial={{ opacity: 0 }}
         >
           What We Do
         </motion.h2>
-        <div ref={gridContainerRef} className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div ref={gridContainerRef} className="grid 2xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-1 gap-3">
           <motion.div
             ref={grid1Ref}
             className="bento-grid backdrop-blur-xl bg-transparent border-2 border-white shadow-lg p-6 rounded-2xl flex flex-col items-center justify-between relative bento1 overflow-visible"
@@ -341,20 +341,20 @@ const Serviceprovide = forwardRef<HTMLDivElement>((_props, ref) => {
               <img
                 src={wedobento1}
                 alt="We Do Creative"
-                className="w-72 h-80 rounded-xl drop-shadow-lg relative top-20 -z-10 -rotate-12"
+                className="2xl:w-72 2xl:h-80 rounded-xl drop-shadow-lg relative 2xl:top-20 lg:top-20 xs:top-12  -z-10 -rotate-12 lg:w-60 lg:h-72 md:w-52 md:h-60 sm:w-52 sm:h-48 xs:w-44 xs:h-40"
               />
               <img
                 src={wedobento1o1}
                 alt="We Do Creative"
-                className="w-72 h-80 rounded-xl drop-shadow-lg -mt-8"
+                className="2xl:w-72 2xl:h-80 rounded-xl drop-shadow-lg -mt-8 lg:w-60 lg:h-72 md:w-72 md:h-60 sm:w-48 sm:h-40 xs:w-44 xs:h-40"
               />
             </div>
             <div className="text-center flex flex-col w-fit h-full">
               <div className="grid grid-cols-1 w-full items-center h-fit text-right gap-6">
-                <h3 className="text-7xl font-bold text-black mb-2 font-heading">We Do Creative</h3>
+                <h3 className="2xl:text-7xl lg:text-6xl md:text-7xl sm:text-5xl xs:text-4xl font-bold text-black mb-2 font-heading">We Do Creative</h3>
                 <p
                   ref={subtextRef}
-                  className="text-[#4A44DE] text-3xl font-bold font-heading min-h-[32px] flex items-center justify-center tracking-wide sketch-border"
+                  className="text-[#4A44DE] 2xl:text-3xl lg:text-3xl md:text-3xl sm:text-2xl xs:text-2xl  font-bold font-heading min-h-[32px] flex items-center justify-center tracking-wide sketch-border"
                   style={{
                     textShadow: "0 2px 6px rgba(0,0,0,0.08)",
                     backfaceVisibility: "hidden",
@@ -364,7 +364,7 @@ const Serviceprovide = forwardRef<HTMLDivElement>((_props, ref) => {
                 >
                 </p>
               </div>
-              <div className="flex flex-col gap-2 text-sm text-black font-bold font-body mt-6">
+              <div className="flex flex-col gap-2 text-sm text-black font-bold font-body mt-6 lg:text-left sm:text-left xs:text-left">
                 <motion.span
                   ref={span1Ref}
                   initial={{ opacity: 0, y: 50 }}
@@ -392,10 +392,10 @@ const Serviceprovide = forwardRef<HTMLDivElement>((_props, ref) => {
             >
               <div className="text-center flex flex-col w-full justify-evenly h-full">
                 <div className="grid grid-cols-1 w-full items-center h-fit text-right gap-6">
-                  <h3 className="text-7xl font-bold text-black mb-2 font-heading">We craft stunning</h3>
+                  <h3 className="2xl:text-7xl lg:text-5xl md:text-7xl sm:text-4xl xs:text-4xl font-bold text-black mb-2 font-heading">We craft stunning</h3>
                   <p
                     ref={subtext2Ref}
-                    className="text-[#CDFE64] text-5xl font-bold font-heading min-h-[32px] flex items-center justify-center tracking-wide sketch-border"
+                    className="text-[#CDFE64] 2xl:text-5xl lg:text-4xl md:text-5xl sm:text-3xl xs:text-2xl font-bold font-heading min-h-[32px] flex items-center justify-center tracking-wide sketch-border"
                     style={{
                       textShadow: "0 2px 6px rgba(0,0,0,0.08)",
                       backfaceVisibility: "hidden",
@@ -405,10 +405,10 @@ const Serviceprovide = forwardRef<HTMLDivElement>((_props, ref) => {
                   >
                   </p>
                 </div>
-                <div className="absolute top-1 left-1 -z-10">
-                  <img src={wedobento2} alt="Fuel Your Hustle" className="flex w-52 h-56 rounded-xl" />
+                <div className="absolute 2xl:top-1 2xl:left-1 lg:top-1 lg:left-1 md:top-1 md:left-1 sm:-top-3 sm:-left-14 xs:-top-3 xs:-left-16  -z-10">
+                  <img src={wedobento2} alt="Fuel Your Hustle" className="flex 2xl:w-52 2xl:h-56 lg:w-44 lg:h-48 md:w-60 md:h-52 sm:w-52 sm:h-44 xs:w-44 xs:h-40   rounded-xl" />
                 </div>
-                <div className="flex flex-col gap-2 text-sm text-black font-bold font-body mt-4">
+                <div className="flex flex-col gap-2 text-sm text-black font-bold font-body mt-4 sm:text-left xs:text-left">
                   <motion.span
                     ref={span3Ref}
                     initial={{ opacity: 0, y: 50 }}
@@ -427,10 +427,10 @@ const Serviceprovide = forwardRef<HTMLDivElement>((_props, ref) => {
             >
               <div className="text-center flex flex-col w-full justify-evenly h-full">
                 <div className="grid grid-cols-1 w-full items-center h-fit text-right gap-6">
-                  <h3 className="text-7xl font-bold text-black mb-2 font-heading">We Do Creative</h3>
+                  <h3 className="2xl:text-7xl lg:text-6xl md:text-5xl sm:text-4xl xs:text-4xl font-bold text-black mb-2 font-heading">We Do Creative</h3>
                   <p
                     ref={subtext3Ref}
-                    className="text-[#530304] text-3xl font-bold font-heading min-h-[32px] flex items-center justify-center tracking-wide sketch-border"
+                    className="text-[#530304] 2xl:text-3xl lg:text-3xl md:text-3xl sm:text-2xl xs:text-2xl font-bold font-heading min-h-[32px] flex items-center justify-center tracking-wide sketch-border"
                     style={{
                       textShadow: "0 2px 6px rgba(0,0,0,0.08)",
                       backfaceVisibility: "hidden",
@@ -440,10 +440,10 @@ const Serviceprovide = forwardRef<HTMLDivElement>((_props, ref) => {
                   >
                   </p>
                 </div>
-                <div className="absolute top-1 left-1 -z-10">
-                  <img src={wedobento3} alt="Sound of the Streets" className="flex w-56 h-56 rounded-xl" />
+                <div className="absolute 2xl:top-1 2xl:left-1 lg:top-1 lg:left-1 md:top-1 md:left-1 sm:-top-5 sm:-left-12 xs:-top-5 xs:-left-12 -z-10">
+                  <img src={wedobento3} alt="Sound of the Streets" className="flex 2xl:w-56 2xl:h-56 lg:w-40 lg:h-40 md:w-52 md:h-52 sm:w-40 sm:h-40 xs:w-40 xs:h-40 rounded-xl" />
                 </div>
-                <div className="flex flex-col gap-2 text-sm text-black font-bold font-body mt-5 text-left">
+                <div className="flex flex-col gap-2 text-sm text-black font-bold font-body 2xl:mt-5 lg:mt-5 md:mt-20 sm:mt-10 xs:mt-7 text-left">
                   <motion.span
                     ref={span4Ref}
                     initial={{ opacity: 0, y: 50 }}

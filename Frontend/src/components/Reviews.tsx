@@ -90,15 +90,15 @@ export default function Reviews() {
   return (
     <div className="py-16 px-4 sm:px-6 lg:px-8 bg-transparent">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-7xl font-bold text-black mb-4 text-center font-heading">
+        <h2 className="2xl:text-7xl lg:text-6xl md:text-5xl sm:text-4xl xs:text-2xl font-bold text-black mb-4 text-center font-heading">
           What Our Community Say
         </h2>
-        <p className="text-lg text-gray-600 mb-12 text-center font-body">
+        <p className="2xl:text-lg lg:text-lg md:text-sm sm:text-xs xs:text-xs text-gray-600 mb-12 text-center font-body">
           Discover what our community thinks about their experience with us. Share your own feedback below!
         </p>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 w-full">
+        <div className="grid 2xl:grid-cols-4  lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6 mb-12 w-full">
           {reviews.map((review, index) => (
             <motion.div
               key={review._id}
@@ -120,7 +120,7 @@ export default function Reviews() {
         {/* Review Input Section */}
         {user ? (
           <div className="max-w-2xl mx-auto ">
-            <h3 className="text-5xl font-bold text-gray-900 mb-6 font-heading">Share Your Experience</h3>
+            <h3 className="2xl:text-5xl lg:text-5xl md:text-5xl sm:text-2xl xs:text-2xl font-bold text-gray-900 mb-6 font-heading">Share Your Experience</h3>
             {error && <p className="text-red-500 mb-4 font-body">{error}</p>}
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
               <div>
@@ -132,7 +132,7 @@ export default function Reviews() {
                   value={heading}
                   onChange={(e) => setHeading(e.target.value)}
                   disabled={loading}
-                  className="w-full px-4 py-2.5 border-2 border-black rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200 disabled:opacity-50 font-body"
+                  className="w-full px-4 py-2.5 border-2 border-black rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200 disabled:opacity-50 font-body 2xl:text-sm xs:text-xs"
                   placeholder="Enter your review heading"
                   required
                 />
@@ -145,7 +145,7 @@ export default function Reviews() {
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
                   disabled={loading}
-                  className="w-full px-4 py-2.5 border-2 border-black rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200 disabled:opacity-50 font-body"
+                  className="w-full px-4 py-2.5 border-2 border-black rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200 disabled:opacity-50 font-body 2xl:text-sm  xs:text-xs"
                   placeholder="Share your experience..."
                   rows={4}
                   required
@@ -154,7 +154,7 @@ export default function Reviews() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full button-55 py-5 hover:scale-105  transition-all font-bold text-xl  font-body"
+                className="w-full button-55 2xl:py-5 lg:py-5 md:py-5 sm:py-5 xs:py-2 hover:scale-105  transition-all font-bold 2xl:text-xl lg:text-xl md:text-xl sm:text-xl xs:text-lg  font-body"
               >
                 {loading ? 'Submitting...' : 'Submit Review'}
               </button>

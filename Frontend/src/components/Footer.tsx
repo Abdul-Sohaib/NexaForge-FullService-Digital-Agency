@@ -31,14 +31,14 @@ export function Footer() {
         <div className="absolute bottom-20 right-1/3 w-20 h-20 border-2 border-white rounded-full animate-pulse delay-700"></div>
       </div>
 
-      <div className="px-8 py-12 relative z-10">
+      <div className="2xl:px-8 lg:px-20 md:px-8 sm:px-8 xs:px-8 py-12 relative z-10">
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 gap-3 mb-12">
 
           {/* Agency Info */}
           <div className="lg:col-span-1 w-full footerbackimg h-[20rem]">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-32  rounded-full">
+              <div className="2xl:w-32 lg:w-32 md:w-32 sm:w-24 xs:w-20  rounded-full md:relative md:-left-4 sm:relative xs:relative sm:-top-16 sm:-left-10 xs:-top-10 xs:-left-7">
                 <img src={logo} alt="" />
               </div>
               <div>
@@ -48,7 +48,7 @@ export function Footer() {
                
               </div>
             </div>
-            <p className="text-black text-xl mt-52 font-body">
+            <p className="text-black 2xl:text-xl lg:text-md md:text-sm sm:text-xs xs:text-xs 2xl:mt-52 lg:mt-52 md:mt-48 sm:mt-52 xs:mt-52 font-body">
               We are a creative digital agency specializing in innovative solutions that drive business growth and user engagement.
             </p>
           </div>
@@ -152,7 +152,7 @@ export function Footer() {
           {/* Contact Info & Social Links */}
           <div className="flex flex-col md:flex-row justify-between items-center gap-6 mt-8 pt-6 border-t border-gray-700">
             {/* Contact Info */}
-            <div className="flex flex-col md:flex-row gap-6 text-sm text-black">
+            <div className="flex flex-col md:flex-row gap-6 2xl:text-sm lg:text-sm md:text-xs text-black">
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4" />
                 <a href="mailto:hello@techcraft.agency" className="hover:scale-110 transition-all">
@@ -175,28 +175,28 @@ export function Footer() {
             <div className="flex gap-4">
               <a 
                 href="#twitter" 
-                className="w-10 h-10 bg-white hover:bg-blue-600 rounded-lg flex items-center justify-center transition-all duration-200 hover:transform hover:-translate-y-1 hover:shadow-lg group" 
+                className="2xl:w-10 2xl:h-10 lg:w-10 lg:h-10 md:w-6 md:h-6 bg-white hover:bg-blue-600 rounded-lg flex items-center justify-center transition-all duration-200 hover:transform hover:-translate-y-1 hover:shadow-lg group" 
                 aria-label="Follow us on Twitter"
               >
                 <Twitter className="w-5 h-5 text-black group-hover:text-white transition-colors" />
               </a>
               <a 
                 href="#linkedin" 
-                className="w-10 h-10 bg-white hover:bg-blue-700 rounded-lg flex items-center justify-center transition-all duration-200 hover:transform hover:-translate-y-1 hover:shadow-lg group" 
+                className="2xl:w-10 2xl:h-10 lg:w-10 lg:h-10 md:w-6 md:h-6 bg-white hover:bg-blue-700 rounded-lg flex items-center justify-center transition-all duration-200 hover:transform hover:-translate-y-1 hover:shadow-lg group" 
                 aria-label="Follow us on LinkedIn"
               >
                 <Linkedin className="w-5 h-5 text-black group-hover:text-white transition-colors" />
               </a>
               <a 
                 href="#instagram" 
-                className="w-10 h-10 bg-white hover:bg-gradient-to-r hover:from-pink-500 hover:to-yellow-500 rounded-lg flex items-center justify-center transition-all duration-200 hover:transform hover:-translate-y-1 hover:shadow-lg group" 
+                className="2xl:w-10 2xl:h-10 lg:w-10 lg:h-10 md:w-6 md:h-6 bg-white hover:bg-gradient-to-r hover:from-pink-500 hover:to-yellow-500 rounded-lg flex items-center justify-center transition-all duration-200 hover:transform hover:-translate-y-1 hover:shadow-lg group" 
                 aria-label="Follow us on Instagram"
               >
                 <Instagram className="w-5 h-5 text-black group-hover:text-white transition-colors" />
               </a>
               <a 
                 href="#github" 
-                className="w-10 h-10 bg-white hover:bg-gray-700 rounded-lg flex items-center justify-center transition-all duration-200 hover:transform hover:-translate-y-1 hover:shadow-lg group" 
+                className="2xl:w-10 2xl:h-10 lg:w-10 lg:h-10 md:w-6 md:h-6 bg-white hover:bg-gray-700 rounded-lg flex items-center justify-center transition-all duration-200 hover:transform hover:-translate-y-1 hover:shadow-lg group" 
                 aria-label="Follow us on GitHub"
               >
                 <Github className="w-5 h-5 text-black group-hover:text-white transition-colors" />

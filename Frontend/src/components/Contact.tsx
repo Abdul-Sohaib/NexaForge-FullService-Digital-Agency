@@ -122,15 +122,15 @@ export function Contact({ isOpen, onClose }: ContactProps) {
       {/* Contact Modal */}
       <motion.div
         ref={contactRef}
-        className="fixed top-2 right-3 h-[45rem] w-full md:w-[500px] bg-[#EEE8DA] shadow-2xl z-50 overflow-y-auto rounded-2xl"
+        className="fixed 2xl:top-2 lg:top-4 md:top-4 sm:top-8 right-3 2xl:h-[45rem] lg:h-[38rem] md:[38rem] sm:[20rem] w-full md:w-[500px] sm:w-[400px] xs:w-[350px] bg-[#EEE8DA] shadow-2xl z-50 overflow-y-auto rounded-2xl"
         style={{ display: 'none' }}
       >
         <div className="p-8 h-full flex flex-col">
           {/* Header */}
-          <div className="flex justify-between items-center mb-8 border-b border-black pb-6">
+          <div className="flex justify-between items-center 2xl:mb-8 lg:mb-2 border-b border-black pb-6">
             <div className=''>
-              <h2 className="text-5xl font-bold text-black font-heading">Let's Create</h2>
-              <p className="text-black mt-2 font-body text-left text-xl font-semibold">Get in touch with us</p>
+              <h2 className="2xl:text-5xl lg:text-3xl md:text-3xl sm:text-2xl xs:text-2xl font-bold text-black font-heading">Let's Create</h2>
+              <p className="text-black mt-2 font-body text-left 2xl:text-xl lg:text-md md:text-md sm:text-sm xs:text-xs font-semibold">Get in touch with us</p>
             </div>
             <button
               onClick={onClose}
@@ -142,7 +142,7 @@ export function Contact({ isOpen, onClose }: ContactProps) {
           </div>
 
           {/* Contact Form */}
-          <form onSubmit={handleSubmit} className="flex-1 space-y-6">
+          <form onSubmit={handleSubmit} className="flex-1 space-y-6 sm:mt-3 xs:mt-3">
             <div>
               <label htmlFor="email" className="block text-sm font-semibold text-black mb-2 font-heading text-left">
                 Email Address *
@@ -152,7 +152,7 @@ export function Contact({ isOpen, onClose }: ContactProps) {
                 id="email"
                 name="email"
                 required
-                className="w-full border-2 border-black rounded-xl shadow-sm py-3 px-4 focus:outline-none focus:ring-1 focus:ring-black focus:border-black transition-all duration-200 font-body"
+                className="w-full border-2 border-black rounded-xl shadow-sm py-3 px-4 focus:outline-none focus:ring-1 focus:ring-black focus:border-black transition-all duration-200 font-body xs:text-sm"
                 placeholder="Enter your email address"
               />
             </div>
@@ -165,7 +165,7 @@ export function Contact({ isOpen, onClose }: ContactProps) {
                 id="message"
                 name="message"
                 required
-                className="w-full border-2 border-black rounded-xl shadow-sm py-3 px-4 focus:outline-none focus:ring-1 focus:ring-black focus:border-black transition-all duration-200 font-body resize-none"
+                className="w-full border-2 border-black rounded-xl shadow-sm py-3 px-4 focus:outline-none focus:ring-1 focus:ring-black focus:border-black transition-all duration-200 font-body resize-none xs:text-sm"
                 placeholder="Tell us about your project requirements..."
                 rows={4}
               ></textarea>
@@ -194,8 +194,8 @@ export function Contact({ isOpen, onClose }: ContactProps) {
           </form>
 
           {/* Additional Info */}
-          <div className=" pt-6 border-t border-gray-200 flex flex-col items-center justify-center">
-            <img src={contactimg} alt="Contact Us" className='w-52' />
+          <div className=" pt-6 border-t border-gray-200 flex 2xl:flex-col  items-center justify-center">
+            <img src={contactimg} alt="Contact Us" className='2xl:w-52 lg:w-40 md:w-40 sm:w-20 xs:w-28' />
             <p className="text-sm text-gray-600 text-center font-body">
               We typically respond within 24 hours
             </p>

@@ -4,8 +4,8 @@ import { useAuth } from '../hooks/useAuth';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { motion, easeInOut } from 'framer-motion';
 import { Loading } from './Loading';
-import loginimg from '../assets/loginpageimg.png';
-import signupimg from '../assets/signuppageimg.png';
+import loginimg from '../assets/logingif.gif';
+import signupimg from '../assets/signupgif.gif';
 import axios from 'axios';
 
 export function Auth() {
@@ -142,7 +142,7 @@ export function Auth() {
                 <img 
                   src={isSignUp ? signupimg : loginimg} 
                   alt={isSignUp ? 'Signup Illustration' : 'Login Illustration'} 
-                  className="w-[80rem] h-full object-contain z-10"
+                  className="2xl:max-w-2xl lg:max-w-xl h-full object-contain z-10 relative top-10"
                 />
               </motion.div>
             </div>
@@ -169,7 +169,7 @@ export function Auth() {
                     value={displayName}
                     onChange={(e) => setDisplayName(e.target.value)}
                     disabled={loading}
-                    className="w-full font-body px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200 disabled:opacity-50 placeholder:text-xs"
+                    className="w-full font-body px-4 py-2.5 border-2 border-black rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200 disabled:opacity-50 placeholder:text-xs"
                     placeholder="Enter your full name"
                     required
                   />
@@ -185,7 +185,7 @@ export function Auth() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={loading}
-                  className="w-full font-body px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200 disabled:opacity-50 placeholder:text-xs"
+                  className="w-full font-body px-4 py-2.5 border-2 border-black rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200 disabled:opacity-50 placeholder:text-xs"
                   placeholder={isSignUp ? "Enter your email" : "Enter your email or username"}
                   required
                 />
@@ -200,7 +200,7 @@ export function Auth() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   disabled={loading}
-                  className="w-full font-body px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200 disabled:opacity-50 placeholder:text-xs"
+                  className="w-full font-body px-4 py-2.5 border-2 border-black rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200 disabled:opacity-50 placeholder:text-xs"
                   placeholder="Enter your password"
                   required
                 />
@@ -216,7 +216,7 @@ export function Auth() {
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     disabled={loading}
-                    className="w-full font-body px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200 disabled:opacity-50 placeholder:text-xs"
+                    className="w-full font-body px-4 py-2.5 border-2 border-black rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200 disabled:opacity-50 placeholder:text-xs"
                     placeholder="Confirm your password"
                     required
                   />

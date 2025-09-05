@@ -5,12 +5,13 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import cafedemo1 from '../assets/cafedemoimg1.png';
 import cafedemo2 from '../assets/cafedemoimg2.png';
 import cafedemo3 from '../assets/cafedemoimg3.png';
-
 import restrodemo1 from '../assets/Demo_Restaurant1.png';
 import restrodemo2 from '../assets/Demo_Restaurant2.png';
 import restrodemo3 from '../assets/Demo_Restaurant3.png';
+import uidemo1 from '../assets/Ai_Agent Website.png'
+import uidemo2 from '../assets/Photographer_Portfolio.png'
+import uidemo3 from '../assets/Tea_Portfolio.png'
 
-// Register ScrollTrigger with GSAP
 gsap.registerPlugin(ScrollTrigger);
 
 const Socialcard = () => {
@@ -20,26 +21,26 @@ const Socialcard = () => {
   const line2Ref = useRef<HTMLHeadingElement>(null);
   const line3Ref = useRef<HTMLHeadingElement>(null);
   const finalLineRef = useRef<HTMLHeadingElement>(null);
-  const cardContainerRef = useRef<HTMLDivElement>(null);
-  const currentCardRef = useRef<HTMLDivElement>(null);
+  const cafeCardsRef = useRef<HTMLDivElement>(null);
+  const restaurantCardsRef = useRef<HTMLDivElement>(null);
+  const uiCardsRef = useRef<HTMLDivElement>(null);
 
-  // Card data with unique images, background classes, and customizable colors
   const cafeCards = [
-    { heading: 'Choco Oreo Blast', subtext: 'Indulge in the perfect mix of rich chocolate, crunchy Oreo, and creamy delight - crafted for true dessert lovers.', image: cafedemo1, backgroundClass: 'cafedemo1back', headingColor: '#F5E6D3', subtextColor: '#F5E0C8' },
-    { heading: 'Bold Designs That Spark Appetite', subtext: 'A mouthwatering burger ad with striking typography and rich visuals crafted to grab attention and drive instant cravings.', image: cafedemo2, backgroundClass: 'cafedemo2back', headingColor: '#FFFFFF', subtextColor: '#2B2B2B' },
-    { heading: 'Flavour That Speaks', subtext: 'A fresh and tempting momo ad with bold visuals - crafted to make every bite irresistible.', image: cafedemo3, backgroundClass: 'cafedemo3back', headingColor: '#FFFFFF', subtextColor: '#000000' },
+    { image: cafedemo1, backgroundClass: 'cafedemo1back' },
+    { image: cafedemo2, backgroundClass: 'cafedemo2back' },
+    { image: cafedemo3, backgroundClass: 'cafedemo3back' },
   ];
 
   const restaurantCards = [
-    { heading: 'Hyderabadi Biryani Special', subtext: 'Authentic taste, rich aroma, and pure indulgence  crafted to delight every bite.', image: restrodemo1, backgroundClass: 'restro-bg-1', headingColor: '#000000', subtextColor: '#F8F1E7' },
-    { heading: 'Authentic Flavors, Served Fresh', subtext: 'Experience the perfect blend of taste and tradition', image: restrodemo2, backgroundClass: 'restro-bg-2', headingColor: '#4F3B2A', subtextColor: '#F8F1E7' },
-    { heading: 'Your Cravings, Answered.', subtext: 'Authentic Hakka noodles tossed with fresh, crunchy vegetables.', image: restrodemo3, backgroundClass: 'restro-bg-3', headingColor: '#2E5B4B', subtextColor: '#4A8876' },
+    { image: restrodemo1, backgroundClass: 'restro-bg-1' },
+    { image: restrodemo2, backgroundClass: 'restro-bg-2' },
+    { image: restrodemo3, backgroundClass: 'restro-bg-3' },
   ];
 
   const uiCards = [
-    { heading: 'Portfolio Site', subtext: 'Sleek and responsive design', image: 'https://images.unsplash.com/photo-1467232004584-2cf1d1153fd8', backgroundClass: 'ui-bg-1', headingColor: '#2E395B', subtextColor: '#4A5688' },
-    { heading: 'E-Commerce', subtext: 'User-friendly shopping platform', image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3', backgroundClass: 'ui-bg-2', headingColor: '#4B2E5B', subtextColor: '#6B4A88' },
-    { heading: 'Dashboard UI', subtext: 'Intuitive and modern interface', image: 'https://images.unsplash.com/photo-1551288049-b1f3a85551c7', backgroundClass: 'ui-bg-3', headingColor: '#2E4F3B', subtextColor: '#4A7B5A' },
+    { image: uidemo1, backgroundClass: 'ui-bg-1' },
+    { image: uidemo2, backgroundClass: 'ui-bg-2' },
+    { image: uidemo3, backgroundClass: 'ui-bg-3' },
   ];
 
   useEffect(() => {
@@ -49,314 +50,399 @@ const Socialcard = () => {
     const line2 = line2Ref.current;
     const line3 = line3Ref.current;
     const finalLine = finalLineRef.current;
-    const cardContainer = cardContainerRef.current;
-    const currentCard = currentCardRef.current;
+    const cafeCardsContainer = cafeCardsRef.current;
+    const restaurantCardsContainer = restaurantCardsRef.current;
+    const uiCardsContainer = uiCardsRef.current;
 
-    if (!section || !content || !line1 || !line2 || !line3 || !finalLine || !cardContainer || !currentCard) return;
+    if (!section || !content || !line1 || !line2 || !line3 || !finalLine || 
+        !cafeCardsContainer || !restaurantCardsContainer || !uiCardsContainer) return;
 
-    // Initialize elements with better starting states
+    const cafeCardElements = cafeCardsContainer.querySelectorAll('.card-item');
+    const restaurantCardElements = restaurantCardsContainer.querySelectorAll('.card-item');
+    const uiCardElements = uiCardsContainer.querySelectorAll('.card-item');
+    
+    const isMobile = window.innerWidth <= 768;
+
     gsap.set(section, { opacity: 0 });
-    gsap.set([line1, line2, line3], {
+    gsap.set([line1, line2, line3], { opacity: 0, y: 30 });
+    gsap.set(finalLine, { opacity: 0, y: 50, scale: 0.8 });
+    gsap.set([cafeCardsContainer, restaurantCardsContainer, uiCardsContainer], { opacity: 0 });
+    gsap.set([...cafeCardElements, ...restaurantCardElements, ...uiCardElements], {
       opacity: 0,
-      y: 30,
-    });
-    gsap.set(finalLine, {
-      opacity: 0,
-      y: 50,
-      scale: 0.8,
-    });
-    gsap.set(currentCard, {
-      opacity: 0,
-      y: 20,
-      scale: 0.95,
+      y: 100,
+      scale: 0.9,
     });
 
-    const sections = [
-      { line: line1, cards: cafeCards, title: 'Some demos of Cafes' },
-      { line: line2, cards: restaurantCards, title: 'Some demos of Restaurants' },
-      { line: line3, cards: uiCards, title: 'Some demos of UI and Websites' },
-    ];
-
-    // Improved updateCard function with image slide animation
-    const updateCard = (data: any) => {
-      return new Promise<void>((resolve) => {
-        const img = currentCard.querySelector('img') as HTMLImageElement;
-        const heading = currentCard.querySelector('.card-heading') as HTMLElement;
-        const subtext = currentCard.querySelector('.card-subtext') as HTMLElement;
-        const card = currentCard;
-
-        if (img && heading && subtext && card) {
-          // Update content immediately (while card is hidden)
-          img.style.display = 'block';
-          heading.style.display = 'block';
-          subtext.style.display = 'block';
-          
-          // Preload image to prevent flashing and add slide animation
-          if (img.src !== data.image) {
-            const tempImg = new Image();
-            tempImg.onload = () => {
-              img.src = data.image;
-              
-              // Add slide-up animation to the image when it changes
-              gsap.fromTo(img, 
-                { 
-                  y: 50, 
-                  opacity: 0.7,
-                  scale: 0.95,
-                  rotation: -8 // Start with more rotation
-                },
-                { 
-                  y: 0, 
-                  opacity: 1,
-                  scale: 1,
-                  rotation: -6, // End with original rotation
-                  duration: 0.8,
-                  ease: 'power3.out'
-                }
-              );
-              
-              resolve();
-            };
-            tempImg.onerror = () => resolve(); // Continue even if image fails
-            tempImg.src = data.image;
-          } else {
-            // Even if same image, add a subtle animation
-            gsap.fromTo(img, 
-              { scale: 0.98 },
-              { 
-                scale: 1,
-                duration: 0.4,
-                ease: 'power2.out'
-              }
-            );
-            resolve();
-          }
-          
-          heading.textContent = data.heading;
-          heading.style.color = data.headingColor || '#4B2E39';
-          subtext.textContent = data.subtext;
-          subtext.style.color = data.subtextColor || '#6B4E56';
-          
-          // Update background class
-          card.className = `w-full  bg-white shadow-2xl rounded-3xl p-2 flex items-center justify-center gap-8 hover:shadow-3xl transition-all duration-300 border-2 border-white h-96 mb-16 ${data.backgroundClass || ''}`;
-          
-          if (img.src === data.image) {
-            resolve();
-          }
-        } else {
-          resolve();
-        }
-      });
-    };
-
-    // Initialize first card content
-    updateCard(sections[0].cards[0]);
-
-    // Reduced fallback time
     const fallback = setTimeout(() => {
       gsap.to(section, { opacity: 1, duration: 0.5, ease: 'power2.out' });
     }, 6000);
 
-    // ScrollTrigger to show section
     ScrollTrigger.create({
       trigger: section,
-      start: 'top bottom+=40vh',
+      start: isMobile ? 'top bottom+=10vh' : 'top bottom+=40vh',
       onEnter: () => {
         clearTimeout(fallback);
         gsap.to(section, { opacity: 1, duration: 0.6, ease: 'power2.out' });
       },
       onLeaveBack: () => {
         gsap.to(section, { opacity: 0, duration: 0.3, ease: 'power2.in' });
+        document.body.style.backgroundColor = '';
       },
     });
 
-    // Refined main timeline with corrected positioning
+    const changeBodyColor = (color: string) => {
+      document.body.style.backgroundColor = color;
+    };
+
     const mainTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: section,
-        start: 'top 10%',
-        end: '+=4500', // Slightly reduced for better pacing
-        scrub: 1.2,
+        start: isMobile ? 'top 30%' : 'top 10%',
+        end: isMobile ? '+=22000' : '+=4500',
+        scrub: isMobile ? 1.0 : 1.2,
         pin: true,
         anticipatePin: 1,
         markers: false,
         invalidateOnRefresh: true,
-        snap: {
+        snap: isMobile ? undefined : {
           snapTo: 'labels',
           duration: { min: 0.4, max: 1.0 },
           ease: 'power3.inOut',
           delay: 0.2,
         },
+        onUpdate: (self) => {
+          const progress = self.progress;
+          
+          if (isMobile) {
+            // Mobile-specific color change logic
+            // Keep black background until after the last UI card animation is complete
+            if (progress < 0.90) {
+              changeBodyColor('#2B2B29');
+            } else {
+              changeBodyColor('#F1E8D7');
+            }
+          } else {
+            // Desktop color change logic (unchanged)
+            if (progress < 0.25) {
+              changeBodyColor('#2B2B29');
+            } else if (progress >= 0.25 && progress < 0.5) {
+              changeBodyColor('#2B2B29');
+            } else if (progress >= 0.5 && progress < 0.80) {
+              changeBodyColor('#2B2B29');
+            } else {
+              changeBodyColor('#F1E8D7');
+            }
+          }
+        },
+        onLeave: () => {
+          document.body.style.backgroundColor = '';
+        },
+        onEnterBack: () => {
+          changeBodyColor('#F1E8D7');
+        },
+        onLeaveBack: () => {
+          document.body.style.backgroundColor = '';
+        },
       },
     });
 
-    // Improved card sequence with refined scroll pacing
-    const addCardSequence = async (cards: any[], line: HTMLElement, sectionLabel: string) => {
-      mainTimeline.addLabel(`${sectionLabel}-start`);
-      
-      // Load first card content before showing anything
-      mainTimeline.add(() => {
-        updateCard(cards[0]);
-      });
-      
-      // Show line and first card with staggered timing
+    // Modified Mobile-specific card animation function
+    const animateCardsMobile = (line: HTMLElement, container: HTMLElement, cardElements: NodeListOf<Element>, labelPrefix: string) => {
+      // Show heading first
       mainTimeline
+        .addLabel(`${labelPrefix}-start`)
+        .to(line, { 
+          opacity: 1, 
+          y: 0, 
+          duration: 1.0,
+          ease: 'power3.out' 
+        })
+        .to(container, { 
+          opacity: 1,
+          duration: 0.1
+        }, '-=0.5');
+
+      // Define unique starting and ending points based on section (labelPrefix) and screen width
+      const screenWidth = window.innerWidth;
+      const isVerySmallScreen = screenWidth <= 375; // Add check for very small screens
+      
+      const positions = {
+        cafes: {
+          start: [
+            { y: 200, x: 0 }, // Cafe card 1
+            { y: 250, x: 0 },   // Cafe card 2
+            { y: 300, x: 0 }, // Cafe card 3
+          ],
+          end: [
+            { y: isVerySmallScreen ? 160 : 180, x: 0 },  // Cafe card 1 - reduced for very small screens
+            { y: isVerySmallScreen ? -170 : -150, x: 0 },   // Cafe card 2 - reduced for very small screens
+            { y: isVerySmallScreen ? -520 : -500, x: 0 },  // Cafe card 3 - reduced for very small screens
+          ]
+        },
+        restaurants: {
+          start: [
+            { y: 220, x: 0 }, // Restaurant card 1
+            { y: 270, x:0 },  // Restaurant card 2
+            { y: 320, x: 0 }, // Restaurant card 3
+          ],
+          end: [
+            { y: isVerySmallScreen ? 80 : 100, x: 0 },  // Restaurant card 1 - reduced for very small screens
+            { y: isVerySmallScreen ? -240 : -220, x: 0 },   // Restaurant card 2 - reduced for very small screens
+            { y: isVerySmallScreen ? -600 : -580, x: 0 },  // Restaurant card 3 - reduced for very small screens
+          ]
+        },
+        ui: {
+          start: [
+            { y: 100, x: 0 }, // UI card 1
+            { y: 200, x: 0 },  // UI card 2
+            { y: 100, x: 0 }, // UI card 3
+          ],
+          end: [
+            { y: isVerySmallScreen ? 80 : 100, x: 0 },  // UI card 1 - reduced for very small screens
+            { y: isVerySmallScreen ? -230 : -210, x: 0 },   // UI card 2 - reduced for very small screens
+            { y: isVerySmallScreen ? -570 : -550, x: 0 },  // UI card 3 - reduced for very small screens
+          ]
+        },
+      };
+
+      // Animate each card one by one - positioned just below the heading
+      cardElements.forEach((card, index) => {
+        // Set initial position for each card based on section
+        // Fix: Add type assertion to allow string indexing
+        const startPos = positions[labelPrefix as keyof typeof positions].start[index];
+        gsap.set(card, { 
+          y: startPos.y,
+          x: startPos.x,
+          opacity: 0, 
+          scale: 0.9
+        });
+
+        // Get ending position for each card
+        // Fix: Add type assertion to allow string indexing
+        const endPos = positions[labelPrefix as keyof typeof positions].end[index];
+
+        mainTimeline
+          // Card slides to unique ending point just below heading
+          .to(card, { 
+            opacity: 1, 
+            y: endPos.y, 
+            x: endPos.x,
+            scale: 1,
+            duration: 1.2,
+            ease: 'power3.out' 
+          }, index === 0 ? '-=0.2' : '+=0.2')
+          .addLabel(`${labelPrefix}-card${index + 1}-visible`)
+          // Hold card in position
+          .to({}, { 
+            duration: 3.0
+          });
+
+        // If not the last card, fade it out before showing next
+        if (index < cardElements.length - 1) {
+          mainTimeline
+            .to(card, { 
+              opacity: 0, 
+              y: -50,
+              scale: 0.9,
+              duration: 0.8,
+              ease: 'power3.inOut' 
+            })
+            .addLabel(`${labelPrefix}-card${index + 1}-fadeout`);
+        }
+      });
+
+      // After all cards shown, fade out last card and heading together
+      mainTimeline
+        .to([line, cardElements[cardElements.length - 1]], { 
+          opacity: 0, 
+          y: -50,
+          duration: 1.0,
+          ease: 'power3.inOut' 
+        })
+        .addLabel(`${labelPrefix}-complete`);
+    };
+
+    // Desktop animation function (unchanged)
+    const animateCardsDesktop = (line: HTMLElement, container: HTMLElement, cardElements: NodeListOf<Element>, labelPrefix: string) => {
+      mainTimeline
+        .addLabel(`${labelPrefix}-start`)
         .to(line, { 
           opacity: 1, 
           y: 0, 
           duration: 1.5,
           ease: 'power3.out' 
         })
-        .to(currentCard, { 
+        .to(container, { 
+          opacity: 1,
+          duration: 1.0,
+          ease: 'power2.out' 
+        }, '-=0.3')
+        .to(cardElements, { 
           opacity: 1, 
           y: 0, 
           scale: 1,
-          duration: 1.5,
+          duration: 1.2,
+          stagger: 0.2,
           ease: 'power3.out' 
-        }, '-=0.8')
-        .addLabel(`${sectionLabel}-card1`)
-        .to({}, { duration: 1.2 }); // Hold first card longer
-
-      // Card transitions with more spacing and refined timing
-      cards.slice(1).forEach((card, index) => {
-        mainTimeline
-          .addLabel(`${sectionLabel}-transition-${index + 2}-start`)
-          .to({}, { duration: 0.8 }) // Longer pause for better scroll feel
-          .to(currentCard, { 
-            opacity: 0, 
-            y: -30,
-            scale: 0.92,
-            rotation: 0.5,
-            duration: 1.0,
-            ease: 'power3.inOut' 
-          })
-          .add(() => {
-            updateCard(card);
-          })
-          .to(currentCard, { 
-            opacity: 1, 
-            y: 0,
-            scale: 1,
-            rotation: 0,
-            duration: 1.2,
-            ease: 'power3.out' 
-          }, '+=0.2')
-          .addLabel(`${sectionLabel}-card${index + 2}`)
-          .to({}, { duration: 1.0 }); // Hold each card
-      });
-
-      // Exit with refined animation
-      mainTimeline
-        .to({}, { duration: 1.2 })
-        .to([line, currentCard], { 
+        }, '-=0.5')
+        .addLabel(`${labelPrefix}-visible`)
+        .to({}, { duration: 2.0 })
+        .to([line, container], { 
           opacity: 0, 
           y: -30,
-          scale: 0.92,
-          rotation: -0.5,
           duration: 1.0,
           ease: 'power3.inOut' 
         })
-        .addLabel(`${sectionLabel}-end`);
+        .addLabel(`${labelPrefix}-end`);
     };
 
-    // Build timeline with better section spacing
-    const buildTimeline = async () => {
-      // Section 1: Cafes
-      addCardSequence(sections[0].cards, line1, 'cafes');
-      mainTimeline.to({}, { duration: 0.8 });
+    // Choose animation function based on device
+    const animateCards = isMobile ? animateCardsMobile : animateCardsDesktop;
 
-      // Section 2: Restaurants
-      addCardSequence(sections[1].cards, line2, 'restaurants');
-      mainTimeline.to({}, { duration: 0.8 });
+    // Execute animations for each section
+    animateCards(line1, cafeCardsContainer, cafeCardElements, 'cafes');
+    animateCards(line2, restaurantCardsContainer, restaurantCardElements, 'restaurants');
+    animateCards(line3, uiCardsContainer, uiCardElements, 'ui');
 
-      // Section 3: UI and Websites
-      addCardSequence(sections[2].cards, line3, 'ui');
-      mainTimeline.to({}, { duration: 1.2 });
+    // Final line animation
+    mainTimeline
+      .addLabel('final-start')
+      .to(finalLine, { 
+        opacity: 1, 
+        y: 0,
+        scale: 1,
+        duration: 1.5,
+        ease: 'power3.out' 
+      })
+      .addLabel('final-hold')
+      .to({}, { duration: 3.0 })
+      .to(finalLine, { 
+        opacity: 0, 
+        y: -20,
+        scale: 0.9,
+        duration: 1.0,
+        ease: 'power3.in' 
+      })
+      .addLabel('final-end');
 
-      // Optimized final section - clean and minimal
-      mainTimeline.addLabel('final-start');
-      mainTimeline
-        .to(finalLine, { 
-          opacity: 1, 
-          y: 0,
-          scale: 1,
-          duration: 1.8,
-          ease: 'power3.out' 
-        })
-        .addLabel('final-hold')
-        .to({}, { duration: 2.5 }) // Extended hold for impact
-        .to(finalLine, { 
-          opacity: 0, 
-          y: -20,
-          scale: 0.9,
-          duration: 1.0,
-          ease: 'power3.in' 
-        });
-      mainTimeline.addLabel('final-end');
-    };
-
-    buildTimeline();
-
-    // Cleanup function
     return () => {
       clearTimeout(fallback);
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       gsap.killTweensOf('*');
       mainTimeline.kill();
+      document.body.style.backgroundColor = '';
     };
   }, []);
 
   return (
-    <div ref={sectionRef} className="w-full min-h-screen bg-transparent relative z-20">
-      <div ref={contentRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-center">
-        {/* All lines positioned absolutely to occupy same space */}
-        <div className="relative mt-20 ">
+    <div ref={sectionRef} className="w-full min-h-screen relative z-20">
+      <div ref={contentRef} className="max-w-7xl mx-auto px-4 sm:px-0 lg:px-0 min-h-screen flex flex-col justify-center">
+        <div className="relative pt-12 md:pt-0">
           <div className="text-center">
-            <h2 ref={line1Ref} className="absolute inset-0 text-7xl font-bold text-black font-heading flex items-center justify-center">
-              Some demos Grafics of Cafes
+            <h2 ref={line1Ref} className={`${window.innerWidth <= 768 ? 'relative mb-4' : 'absolute inset-0'} 2xl:text-6xl lg:text-5xl md:text-4xl sm:text-2xl xs:text-xl  2xl:mt-32 lg:mt-32 sm:-mt-10 xs:-mt-20 font-bold text-white font-heading flex items-center justify-center px-2`}>
+              Some demo Graphics of Cafes
             </h2>
-            <h2 ref={line2Ref} className="absolute inset-0 text-6xl font-bold text-black font-heading flex items-center justify-center">
-              Some demos Grafics of Restaurants
+            <h2 ref={line2Ref} className={`${window.innerWidth <= 768 ? 'relative mb-4' : 'absolute inset-0'} 2xl:text-5xl lg:text-4xl md:text-4xl sm:text-2xl xs:text-xl 2xl:mt-32 lg:mt-32 md:-mt-10 sm:-mt-24 xs:-mt-24 font-bold text-white font-heading flex items-center justify-center px-2`}>
+              Some demo Graphics of Restaurants
             </h2>
-            <h2 ref={line3Ref} className="absolute inset-0 text-7xl font-bold text-black font-heading flex items-center justify-center">
+            <h2 ref={line3Ref} className={`${window.innerWidth <= 768 ? 'relative mb-4' : 'absolute inset-0'} 2xl:text-7xl lg:text-6xl md:text-5xl sm:text-3xl xs:text-2xl md:-mt-10 2xl:mt-32 lg:mt-32 sm:-mt-20 font-bold text-white  font-heading flex items-center justify-center px-2`}>
               Some demos of UI 
             </h2>
-            {/* Optimized final line - standalone without card background */}
-            <h2 ref={finalLineRef} className="absolute inset-0 text-6xl font-bold text-gray-800 font-heading flex items-center justify-center mt-60 w-full h-full">
+            <h2 ref={finalLineRef} className="absolute 2xl:text-6xl lg:text-5xl md:text-4xl sm:text-3xl xs:text-2xl font-bold text-black font-heading flex items-center justify-center 2xl:mt-60 lg:mt-60 md:mt-20 sm:mt-24 w-full h-full px-2">
               Let Us ShowCase Your Business
             </h2>
           </div>
-          {/* Invisible spacer to maintain height */}
           <div className="text-5xl font-bold text-transparent font-heading text-center">
             Some demos of Placeholder
           </div>
         </div>
 
-        {/* Fixed Card Container with improved structure and overflow hidden for image animations */}
-        <div ref={cardContainerRef} className="flex justify-center items-center flex-grow">
+        <div className="flex justify-center items-center flex-grow">
+          {/* Cafe Cards - Positioned just below heading in mobile */}
+          <div ref={cafeCardsRef} className={`absolute px-6 grid ${window.innerWidth <= 768 ? 'grid-cols-1 place-items-center gap-4 2xl:mt-12 lg:mt-12 md:mt-12 sm:mt-10 xs:-mt-0' : '2xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-1 gap-5'} w-screen max-w-7xl ${window.innerWidth <= 768 ? 'left-1/2 transform -translate-x-1/2' : ''}`}>
+            {cafeCards.map((card, index) => (
+              <div
+                key={index}
+                className={`card-item w-full shadow-2xl rounded-3xl flex items-center justify-center hover:shadow-3xl transition-all duration-300 border-2 border-white 2xl:h-[25rem] lg:h-[20rem] md:h-[20rem] sm:h-[20rem] xs:h-[18rem] overflow-hidden relative object-cover ${card.backgroundClass} ${window.innerWidth <= 768 ? 'max-w-sm mx-auto' : ''}`}
+                style={window.innerWidth <= 768 ? { transform: `translateX(${index === 0 ? '-100px' : index === 1 ? '0px' : '100px'})` } : {}}
+              >
+                <div className="absolute inset-0 bg-white/10 backdrop-blur-xl z-0"></div>
+                <div className="relative z-10 flex-shrink-0 overflow-hidden">
+                  <img
+                    src={card.image}
+                    alt={`Cafe Demo ${index + 1}`}
+                    className="2xl:max-w-[24rem] lg:max-w-[18rem] md:max-w-[18rem] sm:max-w-[18rem] xs:max-w-[16rem] rounded-3xl shadow-xl object-cover border-2 border-black transition-transform duration-300 hover:scale-105"
+                    loading="eager"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Restaurant Cards - Positioned just below heading in mobile */}
+          <div ref={restaurantCardsRef} className={`absolute px-6 grid ${window.innerWidth <= 768 ? 'grid-cols-1 place-items-center gap-4 2xl:mt-44 lg:mt-44 md:-mt-10 sm:-mt-10 xs:mt-0 xs:top-8 2xl:top-0 lg:-top-20' : '2xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-1 gap-5'} w-screen max-w-7xl ${window.innerWidth <= 768 ? 'left-1/2 transform -translate-x-1/2' : ''}`}>
+            {restaurantCards.map((card, index) => (
+              <div
+                key={index}
+                className={`card-item w-full shadow-2xl rounded-3xl flex items-center justify-center hover:shadow-3xl transition-all duration-300 border-2 border-white 2xl:h-[25rem] lg:h-[20rem] md:h-[20rem] sm:h-[20rem] xs:h-[18rem] overflow-hidden relative object-cover ${card.backgroundClass} ${window.innerWidth <= 768 ? 'max-w-sm mx-auto' : ''}`}
+                style={window.innerWidth <= 768 ? { transform: `translateX(${index === 0 ? '-120px' : index === 1 ? '20px' : '120px'})` } : {}}
+              >
+                <div className="absolute inset-0 bg-white/10 backdrop-blur-xl z-0"></div>
+                <div className="relative z-10 flex-shrink-0 overflow-hidden">
+                  <img
+                    src={card.image}
+                    alt={`Restaurant Demo ${index + 1}`}
+                    className="2xl:max-w-[24rem] lg:max-w-[18rem] md:max-w-[18rem] sm:max-w-[18rem] xs:max-w-[16rem] rounded-3xl shadow-xl object-cover border-2 border-black transition-transform duration-300 hover:scale-105"
+                    loading="eager"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* UI Cards - Positioned just below heading in mobile */}
           <div
-            ref={currentCardRef}
-            className="w-full  bg-transparent shadow-2xl rounded-3xl p-2 flex items-center justify-center gap-8 hover:shadow-3xl transition-all duration-300 border-2 border-white cafe-bg-1 relative h-96 mb-16 overflow-hidden"
+            ref={uiCardsRef}
+            className={`absolute px-6 grid ${
+              window.innerWidth <= 768
+                ? 'grid-cols-1 place-items-center gap-4 2xl:mt-52 lg:mt-52 md:mt-52 sm:mt-20 xs:mt-40'
+                : '2xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-1 gap-5'
+            } w-screen ${
+              window.innerWidth <= 768 ? 'left-1/2 transform -translate-x-1/2' : ''
+            }`}
           >
-            <div className="flex-shrink-0 overflow-hidden">
-              <img
-                src={cafedemo1}
-                alt="Demo"
-                className="max-w-[28rem] rounded-2xl shadow-lg absolute -top-14 -left-5 -z-10 -rotate-6 transition-transform duration-300"
-                loading="eager"
-                style={{
-                  willChange: 'transform, opacity'
-                }}
-              />
-            </div>
-            <div className="flex flex-col justify-center space-y-4 flex-grow items-end px-5">
-              <h3 className="card-heading text-5xl font-bold text-[#4B2E39] font-heading leading-tight transition-colors duration-300 text-right max-w-3xl">
-                Cafe Mocha
-              </h3>
-              <p className="card-subtext text-md text-[#6B4E56] font-body leading-relaxed transition-colors duration-300 text-right max-w-2xl">
-                Cozy ambiance with artisan coffee
-              </p>
-            </div>
+            {uiCards.map((card, index) => (
+              <div
+                key={index}
+                className={`card-item w-full shadow-2xl rounded-3xl flex items-center justify-center hover:shadow-3xl transition-all duration-300 border-2 border-white 2xl:h-[24rem] lg:h-[16rem] md:h-[18rem] sm:h-[20rem] xs:h-[15rem] overflow-hidden relative object-cover ${card.backgroundClass} ${
+                  window.innerWidth <= 768 ? 'max-w-sm mx-auto' : ''
+                }`}
+                style={
+                  window.innerWidth <= 768
+                    ? {
+                        transform: `translateX(${
+                          index === 0
+                            ? '-140px'
+                            : index === 1
+                            ? '40px'
+                            : '140px'
+                        })`,
+                      }
+                    : {}
+                }
+              >
+                <div className="absolute inset-0 bg-white/10 backdrop-blur-xl z-0"></div>
+                <div className="relative z-10 flex-shrink-0 overflow-hidden">
+                  <img
+                    src={card.image}
+                    alt={`UI Demo ${index + 1}`}
+                    className="2xl:max-w-[28rem] lg:max-w-[18rem] md:max-w-[22rem] sm:max-w-[22rem] xs:max-w-[19rem] rounded-3xl shadow-xl object-cover border-2 border-black transition-transform duration-300 hover:scale-105"
+                    loading="eager"
+                    style={{ willChange: 'transform' }}
+                  />
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

@@ -6,13 +6,27 @@ export default {
   ],
   theme: {
     extend: {
-        fontFamily: {
-     nav: ['Amatic SC', 'cursive'],        // For nav links
-      heading: ["Sora", 'sans-serif'],    // For bold sketch headings
-      body: ['Inter', 'sans-serif'],    
-    },
-
+      fontFamily: {
+        nav: ['Amatic SC', 'cursive'],        // For nav links
+        heading: ["Sora", 'sans-serif'],      // For bold sketch headings
+        body: ['Inter', 'sans-serif'],        // For body text
+      },
+      // Custom breakpoints for better responsive control
+      screens: {
+        'xs': '375px',      // Extra small devices
+        'sm': '425px',      // Extra small devices
+              // Small devices (default)
+        'md': '768px',      // Medium devices (default)
+        'lg': '1024px',     // Large devices (default)
+        'xl': '1280px',     // Extra large devices (default)
+        '2xl': '1536px',    // 2X large devices (default)
+        '3xl': '1920px',    // Ultra wide screens
+      },
+      // Custom spacing for better responsive layouts
+    
     },
   },
-  plugins: [],
+  plugins: [
+    // Add any additional plugins here if needed
+  ],
 }
