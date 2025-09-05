@@ -8,7 +8,7 @@ const express = require('express');
    const app = express();
    app.get('/healthz', (req, res) => res.send('ok'));
    const allowedOrigins = [
-     process.env.FRONTEND_URL || 'http://localhost:5173',
+     process.env.FRONTEND_URL || 'https://nexa-forge-full-service-digital-age.vercel.app',
    ];
    app.use(cors({
      origin: (origin, callback) => {
