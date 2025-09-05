@@ -6,7 +6,7 @@ const express = require('express');
    require('dotenv').config();
 
    const app = express();
-
+   app.get('/healthz', (req, res) => res.send('ok'));
    const allowedOrigins = [
      process.env.FRONTEND_URL || 'http://localhost:5173',
    ];
