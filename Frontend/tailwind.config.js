@@ -12,17 +12,17 @@ export default {
         body: ['Inter', 'sans-serif'],        // For body text
       },
       // Custom breakpoints for better responsive control
-      screens: {
-        'xs': '375px', 
-        'customwidth':'393px',     // Extra small devices
-        'sm': '425px',      // Extra small devices
-              // Small devices (default)
-        'md': '768px',      // Medium devices (default)
-        'lg': '1024px',     // Large devices (default)
-        'xl': '1280px',     // Extra large devices (default)
-        '2xl': '1536px',    // 2X large devices (default)
-        '3xl': '1920px',    // Ultra wide screens
-      },
+screens: {
+  // xs now includes the custom range condition (375px to 500px)
+  'xs': { 'min': '375px', 'max': '500px' },   // applies from 375px to 500px only
+  'sm': { 'min': '501px' },                   // ≥ 425px
+  'md': { 'min': '768px' },                   // ≥ 768px
+  'lg': { 'min': '1024px' },                  // ≥ 1024px
+  'xl': { 'min': '1280px' },                  // ≥ 1280px
+  '2xl': { 'min': '1536px' },                 // ≥ 1536px
+  '3xl': { 'min': '1920px' },                 // ≥ 1920px
+}
+
       // Custom spacing for better responsive layouts
     
     },

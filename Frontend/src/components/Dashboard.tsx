@@ -65,7 +65,7 @@ export function Dashboard() {
         </div>
         
         {/* Socialcard section - z-index 20 (highest for pinning) - Increased spacing */}
-        <div ref={socialCardRef} className="relative z-20 2xl:mt-[70rem] lg:mt-[70rem] md:mt-[80rem] sm:mt-[80rem] xs:mt-[90rem] customwidth:mt-[70rem]"> {/* Increased from 10rem to 15rem */}
+        <div ref={socialCardRef} className="relative z-20 2xl:mt-[25rem] lg:mt-[70rem] md:mt-[80rem] sm:mt-[80rem] xs:mt-[15rem] "> {/* Increased from 10rem to 15rem */}
           <div ref={lineEndRef}>
             <Socialcard />
           </div>
@@ -77,7 +77,7 @@ export function Dashboard() {
         </div>
         
         {/* Reviews section - z-index 30 - Increased spacing */}
-        <div ref={reviewsRef} className="relative z-30 2xl:mt-[10rem] lg:mt-[0rem] md:mt-[0rem] sm:mt-[0rem] customwidth:-mt-[40rem]"> {/* Increased from 16 to 20rem */}
+        <div ref={reviewsRef} className="relative z-30 2xl:mt-[0rem] lg:mt-[0rem] md:mt-[0rem] sm:mt-[0rem] xs:-mt-[0rem] "> {/* Increased from 16 to 20rem */}
           <Reviews />
         </div>
 

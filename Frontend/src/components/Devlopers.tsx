@@ -371,14 +371,14 @@ const Developers = () => {
     <div ref={sectionRef} className="w-full relative z-25 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-center items-center relative">
         {/* Centered Heading */}
-        <div className="flex w-full justify-center items-center relative mb-16 2xl:-mt-40 lg:-mt-40 md:-mt-[30rem] sm:-mt-[30rem] xs:-mt-[30rem] customwidth:-mt-[40rem]" ref={headingRef}>
-          <h2 className="2xl:text-7xl lg:text-6xl md:text-6xl sm:text-4xl xs:text-3xl font-bold text-black font-heading text-center leading-tight z-20">
+        <div className="flex w-full justify-center items-center relative mb-16 2xl:-mt-40 lg:-mt-40 md:-mt-[30rem] sm:-mt-[30rem] xs:-mt-[60rem] customwidth:-mt-[40rem]" ref={headingRef}>
+          <h2 className="2xl:text-7xl lg:text-6xl md:text-6xl sm:text-4xl xs:text-4xl font-bold text-black font-heading text-center leading-tight z-20">
             Who We Are
           </h2>
           <img
             src={whoweareimg}
             alt=""
-            className="2xl:w-36 lg:w-28 md:w-28 sm:w-20 xs:w-20 absolute 2xl:-top-16 2xl:right-60 lg:-top-14 lg:right-40 md:-top-14 md:right-14 sm:-top-10 sm:-right-5 xs:-top-10 xs:-right-5 z-10 rotate-3"
+            className="2xl:w-36 lg:w-28 md:w-28 sm:w-20 xs:w-24 absolute 2xl:-top-16 2xl:right-60 lg:-top-14 lg:right-40 md:-top-14 md:right-14 sm:-top-10 sm:-right-5 xs:-top-12 xs:-right-1 z-10 rotate-3"
           />
         </div>
 
@@ -390,17 +390,17 @@ const Developers = () => {
           {/* Left Card - Pratik */}
           <div
             ref={leftCardRef}
-            className={`flex flex-col justify-between p-6 rounded-3xl shadow-xl hover:shadow-2xl w-full 2xl:h-[25rem] lg:h-[22rem] md:h-[24rem] sm:h-[20rem] xs:h-[20rem] 2xl:top-0 lg:top-0 md:top-28 sm:top-0 xs:-top-20 customwidth:-top-[20vh]  relative overflow-hidden group  cursor-pointer bg-[#0668E3] button-55 ${window.innerWidth <= 768 ? 'max-w-sm mx-auto absolute' : ''}`}
+            className={`flex flex-col justify-between p-6 rounded-3xl shadow-xl hover:shadow-2xl w-full 2xl:h-[25rem] lg:h-[22rem] md:h-[24rem] sm:h-[20rem] xs:h-[25rem] 2xl:top-0 lg:top-0 md:top-28 sm:top-0 xs:-top-20   relative overflow-hidden group  cursor-pointer bg-[#0668E3] button-55 ${window.innerWidth <= 768 ? 'max-w-sm mx-auto absolute' : ''}`}
             style={getCardStyle(0)}
             onMouseEnter={() => handleCardHover(0)}
             onMouseLeave={handleCardLeave}
           >
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 h-full flex flex-col justify-between">
               <div>
-                <h3 className="2xl:text-3xl lg:text-2xl md:text-3xl sm:text-2xl xs:text-2xl font-bold text-black mb-4 font-heading">
+                <h3 className="2xl:text-3xl lg:text-2xl md:text-3xl sm:text-2xl xs:text-4xl font-bold text-black mb-4 font-heading">
                   {developerCards[0].heading}
                 </h3>
-                <p className="text-black/70 2xl:text-sm lg:text-xs md:text-xs sm:text-xs xs:text-xs font-body font-semibold leading-relaxed mb-4">
+                <p className="text-black/70 2xl:text-sm lg:text-xs md:text-xs sm:text-xs xs:text-sm font-body font-semibold leading-relaxed mb-4">
                   {developerCards[0].subtext}
                 </p>
               </div>
@@ -409,13 +409,13 @@ const Developers = () => {
                   <img
                     src={developerCards[0].image}
                     alt={developerCards[0].heading}
-                    className="2xl:w-48 lg:w-32 md:w-40 sm:w-40 xs:w-40 h-full rounded-full object-cover border-2 border-black"
+                    className="2xl:w-48 lg:w-32 md:w-40 sm:w-40 xs:w-48 h-full rounded-full object-cover border-2 border-black"
                     loading="eager"
                   />
                   <img
                     src={developerCards[0].toolImage}
                     alt={`${developerCards[0].heading} tools`}
-                    className="2xl:w-60 2xl:h-60 lg:w-40 lg:h-40 md:w-44 md:h-44 sm:w-44 sm:h-44 xs:w-44 xs:h-44 rounded-full object-cover relative 2xl:right-24 lg:right-16 md:right-16 sm:right-16 xs:right-16 -rotate-12"
+                    className="2xl:w-60 2xl:h-60 lg:w-40 lg:h-40 md:w-44 md:h-44 sm:w-44 sm:h-44 xs:w-48 xs:h-48 rounded-full object-cover relative 2xl:right-24 lg:right-16 md:right-16 sm:right-16 xs:right-20 -rotate-12"
                     loading="eager"
                   />
                 </div>
@@ -428,17 +428,17 @@ const Developers = () => {
           {/* Middle Card - Sohaib */}
           <div
             ref={middleCardRef}
-            className={`flex flex-col justify-between p-6 rounded-3xl shadow-xl hover:shadow-2xl w-full 2xl:h-[25rem] lg:h-[22rem] md:h-[24rem] sm:h-[20rem] xs:h-[20rem] 2xl:-mt-20 lg:-mt-20  md:top-10 customwidth:-top-[10vh]  relative overflow-hidden group cursor-pointer bg-[#FFF0B5] button-55 ${window.innerWidth <= 768 ? 'max-w-sm mx-auto absolute' : ''}`}
+            className={`flex flex-col justify-between p-6 rounded-3xl shadow-xl hover:shadow-2xl w-full 2xl:h-[25rem] lg:h-[22rem] md:h-[24rem] sm:h-[20rem] xs:h-[25rem] 2xl:-mt-20 lg:-mt-20  md:top-10 xs:-top-[10vh]  relative overflow-hidden group cursor-pointer bg-[#FFF0B5] button-55 ${window.innerWidth <= 768 ? 'max-w-sm mx-auto absolute' : ''}`}
             style={getCardStyle(1)}
             onMouseEnter={() => handleCardHover(1)}
             onMouseLeave={handleCardLeave}
           >
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 h-full flex flex-col justify-between">
               <div>
-                <h3 className="2xl:text-3xl lg:text-2xl md:text-3xl sm:text-2xl xs:text-2xl font-bold text-black mb-4 font-heading">
+                <h3 className="2xl:text-3xl lg:text-2xl md:text-3xl sm:text-2xl xs:text-3xl font-bold text-black mb-4 font-heading">
                   {developerCards[1].heading}
                 </h3>
-                <p className="text-black/70 2xl:text-sm lg:text-xs md:text-xs sm:text-xs xs:text-xs font-body font-semibold leading-relaxed mb-4">
+                <p className="text-black/70 2xl:text-sm lg:text-xs md:text-xs sm:text-xs xs:text-sm font-body font-semibold leading-relaxed mb-4">
                   {developerCards[1].subtext}
                 </p>
               </div>
@@ -447,13 +447,13 @@ const Developers = () => {
                   <img
                     src={developerCards[1].image}
                     alt={developerCards[1].heading}
-                    className="2xl:w-48 2xl:h-48 lg:w-32 md:w-40 sm:w-40 sm:h-40 xs:w-40 xs:h-40 h-full rounded-full object-cover border-2 border-black"
+                    className="2xl:w-48 2xl:h-48 lg:w-32 md:w-40 sm:w-40 sm:h-40 xs:w-48 xs:h-48 h-full rounded-full object-cover border-2 border-black"
                     loading="eager"
                   />
                   <img
                     src={developerCards[1].toolImage}
                     alt={`${developerCards[1].heading} tools`}
-                    className="2xl:w-60 2xl:h-60 lg:w-40 lg:h-40 md:w-44 md:h-44 sm:w-44 sm:h-44 xs:w-44 xs:h-44 rounded-full object-cover relative 2xl:right-24 lg:right-16 md:right-20 sm:right-20 xs:right-20"
+                    className="2xl:w-60 2xl:h-60 lg:w-40 lg:h-40 md:w-44 md:h-44 sm:w-44 sm:h-44 xs:w-48 xs:h-48 rounded-full object-cover relative 2xl:right-24 lg:right-16 md:right-20 sm:right-20 xs:right-20"
                     loading="eager"
                   />
                 </div>
@@ -467,17 +467,17 @@ const Developers = () => {
           {/* Right Card - Abhijit */}
           <div
             ref={rightCardRef}
-            className={`flex flex-col justify-between p-6 rounded-3xl shadow-xl hover:shadow-2xl w-full 2xl:h-[25rem] lg:h-[22rem] md:h-[24rem] sm:h-[20rem] xs:h-[20rem] 2xl:top-0 lg:top-0 md:top-0 sm:top-0  xs:top-10 customwidth:-top-[4vh]  relative overflow-hidden group cursor-pointer bg-[#8EBFDD] button-55 ${window.innerWidth <= 768 ? 'max-w-sm mx-auto absolute' : ''}`}
+            className={`flex flex-col justify-between p-6 rounded-3xl shadow-xl hover:shadow-2xl w-full 2xl:h-[25rem] lg:h-[22rem] md:h-[24rem] sm:h-[20rem] xs:h-[25rem] 2xl:top-0 lg:top-0 md:top-0 sm:top-0  xs:-top-[16vh] customwidth:-top-[4vh]  relative overflow-hidden group cursor-pointer bg-[#8EBFDD] button-55 ${window.innerWidth <= 768 ? 'max-w-sm mx-auto absolute' : ''}`}
             style={getCardStyle(2)}
             onMouseEnter={() => handleCardHover(2)}
             onMouseLeave={handleCardLeave}
           >
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 h-full flex flex-col justify-between">
               <div>
-                <h3 className="2xl:text-3xl lg:text-2xl md:text-3xl sm:text-2xl xs:text-2xl font-bold text-black mb-4 font-heading">
+                <h3 className="2xl:text-3xl lg:text-2xl md:text-3xl sm:text-2xl xs:text-4xl font-bold text-black mb-4 font-heading">
                   {developerCards[2].heading}
                 </h3>
-                <p className="text-black/70 2xl:text-sm lg:text-xs md:text-xs sm:text-xs xs:text-xs font-body font-semibold leading-relaxed mb-4">
+                <p className="text-black/70 2xl:text-sm lg:text-xs md:text-xs sm:text-xs xs:text-sm font-body font-semibold leading-relaxed mb-4">
                   {developerCards[2].subtext}
                 </p>
               </div>
@@ -486,13 +486,13 @@ const Developers = () => {
                   <img
                     src={developerCards[2].image}
                     alt={developerCards[2].heading}
-                    className="2xl:w-48 lg:w-32 md:w-40 sm:w-40 xs:w-40 h-full rounded-full object-cover border-2 border-black"
+                    className="2xl:w-48 lg:w-32 md:w-40 sm:w-40 xs:w-48 h-full rounded-full object-cover border-2 border-black"
                     loading="eager"
                   />
                   <img
                     src={developerCards[2].toolImage}
                     alt={`${developerCards[2].heading} tools`}
-                    className="2xl:w-60 2xl:h-60 lg:w-40 lg:h-40 md:w-44 md:h-44 sm:w-44 sm:h-44 xs:w-44 xs:h-44 rounded-full object-cover relative 2xl:right-24 lg:right-16 md:right-20 sm:right-20 xs:right-20"
+                    className="2xl:w-60 2xl:h-60 lg:w-40 lg:h-40 md:w-44 md:h-44 sm:w-44 sm:h-44 xs:w-48 xs:h-48 rounded-full object-cover relative 2xl:right-24 lg:right-16 md:right-20 sm:right-20 xs:right-20"
                     loading="eager"
                   />
                 </div>

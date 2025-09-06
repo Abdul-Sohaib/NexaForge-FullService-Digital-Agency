@@ -339,16 +339,16 @@ const Socialcard = () => {
       <div ref={contentRef} className="max-w-7xl mx-auto px-4 sm:px-0 lg:px-0 min-h-screen flex flex-col justify-center">
         <div className="relative pt-12 md:pt-0">
           <div className="text-center">
-            <h2 ref={line1Ref} className={`${window.innerWidth <= 768 ? 'relative mb-4' : 'absolute inset-0'} 2xl:text-6xl lg:text-5xl md:text-4xl sm:text-2xl xs:text-xl  2xl:mt-32 lg:mt-32 sm:-mt-10 xs:-mt-20 font-bold text-white font-heading flex items-center justify-center px-2`}>
+            <h2 ref={line1Ref} className={`${window.innerWidth <= 768 ? 'relative mb-4' : 'absolute inset-0'} 2xl:text-6xl lg:text-5xl md:text-4xl sm:text-2xl xs:text-2xl  2xl:mt-32 lg:mt-32 sm:-mt-10 xs:-mt-20 font-bold text-white font-heading flex items-center justify-center px-2`}>
               Some demo Graphics of Cafes
             </h2>
-            <h2 ref={line2Ref} className={`${window.innerWidth <= 768 ? 'relative mb-4' : 'absolute inset-0'} 2xl:text-5xl lg:text-4xl md:text-4xl sm:text-2xl xs:text-xl 2xl:mt-32 lg:mt-32 md:-mt-10 sm:-mt-24 xs:-mt-24 font-bold text-white font-heading flex items-center justify-center px-2`}>
+            <h2 ref={line2Ref} className={`${window.innerWidth <= 768 ? 'relative mb-4' : 'absolute inset-0'} 2xl:text-5xl lg:text-4xl md:text-4xl sm:text-2xl xs:text-2xl 2xl:mt-32 lg:mt-32 md:-mt-10 sm:-mt-24 xs:-mt-24 font-bold text-white font-heading flex items-center justify-center px-2`}>
               Some demo Graphics of Restaurants
             </h2>
-            <h2 ref={line3Ref} className={`${window.innerWidth <= 768 ? 'relative mb-4' : 'absolute inset-0'} 2xl:text-7xl lg:text-6xl md:text-5xl sm:text-3xl xs:text-2xl md:-mt-10 2xl:mt-32 lg:mt-32 sm:-mt-20 font-bold text-white  font-heading flex items-center justify-center px-2`}>
+            <h2 ref={line3Ref} className={`${window.innerWidth <= 768 ? 'relative mb-4' : 'absolute inset-0'} 2xl:text-7xl lg:text-6xl md:text-5xl sm:text-3xl xs:text-3xl md:-mt-10 2xl:mt-32 lg:mt-32 sm:-mt-20 font-bold text-white  font-heading flex items-center justify-center px-2`}>
               Some demos of UI 
             </h2>
-            <h2 ref={finalLineRef} className="absolute 2xl:text-6xl lg:text-5xl md:text-4xl sm:text-3xl xs:text-2xl font-bold text-black font-heading flex items-center justify-center 2xl:mt-60 lg:mt-60 md:mt-20 sm:mt-24 w-full h-full px-2">
+            <h2 ref={finalLineRef} className="absolute 2xl:text-6xl lg:text-5xl md:text-4xl sm:text-3xl xs:text-3xl font-bold text-black font-heading flex items-center justify-center 2xl:mt-60 lg:mt-60 md:mt-20 sm:mt-24 xs:mt-24 w-full h-full px-2">
               Let Us ShowCase Your Business
             </h2>
           </div>
@@ -359,7 +359,7 @@ const Socialcard = () => {
 
         <div className="flex justify-center items-center flex-grow">
           {/* Cafe Cards - Positioned just below heading in mobile */}
-          <div ref={cafeCardsRef} className={`absolute px-6 xs:px-9 grid ${window.innerWidth <= 768 ? 'grid-cols-1 place-items-center gap-4 2xl:mt-12 lg:mt-12 md:mt-0 md:-top-[5rem] sm:mt-10 xs:-mt-[0rem] xs:-top-[6rem] customwidth:top-[1rem] ' : '2xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-1 gap-5'} w-screen max-w-7xl ${window.innerWidth <= 768 ? 'left-1/2 transform -translate-x-1/2' : ''}`}>
+          <div ref={cafeCardsRef} className={`absolute px-6 xs:px-9 grid ${window.innerWidth <= 768 ? 'grid-cols-1 place-items-center gap-4 2xl:mt-12 lg:mt-12 md:mt-0 md:-top-[5rem] sm:mt-10 xs:-mt-[0rem] xs:-top-[0rem] customwidth:top-[1rem] ' : '2xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-1 gap-5'} w-screen max-w-7xl ${window.innerWidth <= 768 ? 'left-1/2 transform -translate-x-1/2' : ''}`}>
             {cafeCards.map((card, index) => (
               <div
                 key={index}
@@ -371,7 +371,7 @@ const Socialcard = () => {
                   <img
                     src={card.image}
                     alt={`Cafe Demo ${index + 1}`}
-                    className="2xl:max-w-[24rem] lg:max-w-[18rem] md:max-w-[18rem] sm:max-w-[18rem] xs:max-w-[16rem] rounded-3xl shadow-xl object-cover border-2 border-black transition-transform duration-300 hover:scale-105"
+                    className="2xl:max-w-[24rem] lg:max-w-[18rem] md:max-w-[18rem] sm:max-w-[18rem] xs:max-w-[17rem] rounded-3xl shadow-xl object-cover border-2 border-black transition-transform duration-300 hover:scale-105"
                     loading="eager"
                   />
                 </div>
@@ -405,7 +405,7 @@ const Socialcard = () => {
             ref={uiCardsRef}
             className={`absolute px-6 xs:px-9 grid ${
               window.innerWidth <= 768
-                ? 'grid-cols-1 place-items-center gap-4 2xl:mt-52 lg:mt-52 md:mt-[0rem] md:top-[11rem] sm:mt-20 xs:mt-0 xs:-top-[0rem] customwidth:top-[20rem]'
+                ? 'grid-cols-1 place-items-center gap-4 2xl:mt-52 lg:mt-52 md:mt-[0rem] md:top-[11rem] sm:mt-20 xs:mt-0 xs:top-[15rem] '
                 : '2xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-1 gap-5'
             } w-screen ${
               window.innerWidth <= 768 ? 'left-1/2 transform -translate-x-1/2' : ''
@@ -436,7 +436,7 @@ const Socialcard = () => {
                   <img
                     src={card.image}
                     alt={`UI Demo ${index + 1}`}
-                    className="2xl:max-w-[28rem] lg:max-w-[18rem] md:max-w-[22rem] sm:max-w-[22rem] xs:max-w-[19rem] rounded-3xl shadow-xl object-cover border-2 border-black transition-transform duration-300 hover:scale-105"
+                    className="2xl:max-w-[28rem] lg:max-w-[18rem] md:max-w-[22rem] sm:max-w-[22rem] xs:max-w-[20rem] rounded-3xl shadow-xl object-cover border-2 border-black transition-transform duration-300 hover:scale-105"
                     loading="eager"
                     style={{ willChange: 'transform' }}
                   />

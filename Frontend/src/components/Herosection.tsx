@@ -70,7 +70,7 @@ const Herosection = () => {
       
       // Check screen width using md breakpoint (768px)
       const isMobile = window.innerWidth <= 768;
-      const customMobile = window.innerWidth >=412;
+      const customMobile = window.innerWidth >= 300 && window.innerWidth <= 500;
 
       // Initially set up the layout
       gsap.set(heroContent, { 
@@ -229,14 +229,14 @@ const Herosection = () => {
         >
           <motion.h1
             ref={headingRef}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-6 2xl:leading-snug lg:leading-tight md:leading-tight sm:leading-tight xs:leading-tight font-heading"
+            className="text-3xl sm:text-4xl md:text-5xl xs:text-4xl font-bold text-black mb-6 2xl:leading-snug lg:leading-tight md:leading-tight sm:leading-tight xs:leading-tight font-heading"
             initial={{ opacity: 1 }}
           >
             {/* Text will be populated by typewriter effect */}
           </motion.h1>
           <motion.p
             ref={paragraphRef}
-            className="text-sm sm:text-base md:text-lg lg:text-xl font-body text-black max-w-full customwidth:w-screen"
+            className="text-sm sm:text-base md:text-lg lg:text-xl xs:text-lg font-body text-black max-w-full customwidth:w-screen"
             initial={{ opacity: 1 }}
           >
             {/* Text will be populated by typewriter effect */}
@@ -247,13 +247,22 @@ const Herosection = () => {
             ref={imageRef} 
             src={heroimg} 
             alt="Hero" 
-            className="max-w-full 2xl:h-[70vh] lg:h-[70vh] opacity-0 transform customwidth:h-[21rem]" 
+            className="max-w-full 2xl:h-[70vh] lg:h-[70vh] xs:h-[40vh] opacity-0 transform " 
           />
         </div>
       </div>
       
       {/* Optimized Carousel Section */}
-      <div className="w-full overflow-hidden mt-24 sm:mt-32 xs:mt-[30vh]  md:mt-24 lg:mt-12 customwidth:mt-[6vh]">
+   <div className="w-full overflow-hidden
+               customwidth:mt-[9vh]
+               xs:mt-[2vh]
+               sm:mt-[10vh]
+               md:mt-[10vh]
+               lg:mt-[10vh]
+               xl:mt-[10vh]
+               2xl:mt-[8vh]
+               3xl:mt-[10vh]">
+
         <div
           ref={carouselRef}
           className="flex flex-nowrap items-center"

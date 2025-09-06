@@ -89,12 +89,12 @@ export default function Reviews() {
   };
 
   return (
-    <div className="py-16 px-4 sm:px-6 lg:px-8 bg-transparent">
+    <div className=" px-4 sm:px-6 lg:px-8 bg-transparent">
       <div className="max-w-7xl mx-auto">
-        <h2 className="2xl:text-7xl lg:text-6xl md:text-5xl sm:text-4xl xs:text-2xl font-bold text-black mb-4 text-center font-heading">
+        <h2 className="2xl:text-7xl lg:text-6xl md:text-5xl sm:text-4xl xs:text-4xl font-bold text-black mb-4 text-center font-heading">
           What Our Community Say
         </h2>
-        <p className="2xl:text-lg lg:text-lg md:text-sm sm:text-xs xs:text-xs text-gray-600 mb-12 text-center font-body">
+        <p className="2xl:text-lg lg:text-lg md:text-sm sm:text-xs xs:text-sm text-gray-600 mb-12 text-center font-body">
           Discover what our community thinks about their experience with us. Share your own feedback below!
         </p>
 

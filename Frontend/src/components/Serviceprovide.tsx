@@ -351,7 +351,7 @@ const Serviceprovide = forwardRef<HTMLDivElement>((_props, ref) => {
             </div>
             <div className="text-center flex flex-col w-fit h-full">
               <div className="grid grid-cols-1 w-full items-center h-fit text-right gap-6">
-                <h3 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-black mb-2 font-heading">We Do Creative</h3>
+                <h3 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xs:text-5xl font-bold text-black mb-2 font-heading">We Do Creative</h3>
                 <p
                   ref={subtextRef}
                   className="text-[#4A44DE] text-2xl md:text-3xl font-bold font-heading min-h-[32px] flex items-center justify-center tracking-wide sketch-border"
@@ -392,7 +392,7 @@ const Serviceprovide = forwardRef<HTMLDivElement>((_props, ref) => {
             >
               <div className="text-center flex flex-col w-full justify-evenly h-full">
                 <div className="grid grid-cols-1 w-full items-center h-fit text-right gap-6">
-                  <h3 className="text-4xl sm:text-5xl md:text-7xl lg:text-5xl 2xl:text-7xl font-bold text-black mb-2 font-heading">We craft stunning</h3>
+                  <h3 className="text-4xl sm:text-5xl md:text-7xl lg:text-5xl 2xl:text-7xl xs:text-5xl font-bold text-black mb-2 font-heading">We craft stunning</h3>
                   <p
                     ref={subtext2Ref}
                     className="text-[#CDFE64] text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl font-bold font-heading min-h-[32px] flex items-center justify-center tracking-wide sketch-border"
@@ -427,7 +427,7 @@ const Serviceprovide = forwardRef<HTMLDivElement>((_props, ref) => {
             >
               <div className="text-center flex flex-col w-full justify-evenly h-full">
                 <div className="grid grid-cols-1 w-full items-center h-fit text-right gap-6">
-                  <h3 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-black mb-2 font-heading">We Do Creative</h3>
+                  <h3 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xs:text-5xl font-bold text-black mb-2 font-heading">We Do Creative</h3>
                   <p
                     ref={subtext3Ref}
                     className="text-[#530304] text-2xl md:text-3xl font-bold font-heading min-h-[32px] flex items-center justify-center tracking-wide sketch-border"
