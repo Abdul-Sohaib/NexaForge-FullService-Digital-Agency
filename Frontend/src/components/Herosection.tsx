@@ -70,6 +70,7 @@ const Herosection = () => {
       
       // Check screen width using md breakpoint (768px)
       const isMobile = window.innerWidth <= 768;
+      const customMobile = window.innerWidth === 412;
 
       // Initially set up the layout
       gsap.set(heroContent, { 
@@ -77,10 +78,10 @@ const Herosection = () => {
         transition: 'none'
       });
       gsap.set(imageContainer, { 
-        opacity: isMobile ? 0 : 0,
-        width: isMobile ? '0%' : '0%',
+        opacity: (isMobile && !customMobile) ? 0 : 0, // Hide for mobile except 412px
+        width: (isMobile && !customMobile) ? '0%' : '0%',
         overflow: 'hidden',
-        display: isMobile ? 'none' : 'flex'
+        display: customMobile ? 'flex' : (isMobile ? 'none' : 'flex')
       });
       
       // Typewriter for heading
@@ -99,21 +100,24 @@ const Herosection = () => {
       const tl = gsap.timeline();
       
       // Animate layout based on screen size
-      if (!isMobile) {
-        // Desktop animation (md and above)
+      if (!isMobile || customMobile) {
+        // Desktop animation (md and above) OR custom mobile (412px)
+        const contentWidth = customMobile ? '100%' : '66.666667%'; // Adjust width for 412px
+        const imageWidth = customMobile ? '100%' : ' 33.333333%'; // Adjust width for 412px
+        
         tl.to(heroContent, {
-          width: '66.666667%', // equivalent to w-2/3
+          width: contentWidth,
           duration: 1.5,
           ease: 'power3.inOut'
         }, 0)
         .to(imageContainer, {
-          width: '33.333333%', // equivalent to w-1/3
+          width: imageWidth,
           opacity: 1,
           duration: 1.5,
           ease: 'power3.inOut'
         }, 0);
       } else {
-        // Mobile: keep full width, keep image hidden
+        // Regular mobile: keep full width, keep image hidden
         tl.to(heroContent, {
           width: '100%',
           duration: 1.5,
@@ -126,26 +130,29 @@ const Herosection = () => {
         tl.call(() => resolve(true), [], 1.5);
       });
       
-      // Small delay before image animation (only for desktop)
-      if (!isMobile) {
+      // Small delay before image animation (for desktop AND 412px)
+      if (!isMobile || customMobile) {
         await new Promise(resolve => setTimeout(resolve, 200));
         
         // Smooth fade in image with enhanced animation
         await new Promise(resolve => {
+          const imageScale = customMobile ? 0.8 : 0.9; // Slightly smaller scale for 412px
+          const imageDuration = customMobile ? 1.2 : 1.5; // Faster animation for 412px
+          
           gsap.fromTo(
             imageRef.current,
             { 
               opacity: 0, 
-              scale: 0.9,
-              y: 30,
-              rotationY: 15
+              scale: imageScale,
+              y: customMobile ? 20 : 30, // Less movement for 412px
+              rotationY: customMobile ? 10 : 15 // Less rotation for 412px
             },
             { 
               opacity: 1, 
               scale: 1,
               y: 0,
               rotationY: 0,
-              duration: 1.5, 
+              duration: imageDuration, 
               ease: 'power3.out',
               onComplete: () => resolve(true)
             }
@@ -212,41 +219,41 @@ const Herosection = () => {
   return (
     <div
       ref={heroRef}
-      className="hero-section relative flex flex-col items-center justify-center min-h-[60vh] bg-transparent 2xl:mt-[9vh] lg:mt-[12vh] md:mt-40 sm:mt-40 xs:mt-40"
+      className="hero-section relative flex flex-col items-center justify-center min-h-[60vh] bg-transparent mt-28 sm:mt-32 md:mt-40 lg:mt-[12vh]"
     >
       <div 
         ref={containerRef}
-        className="flex flex-col md:flex-row items-center justify-between w-full max-w-7xl mx-auto  sm:px-0 lg:px-8"
+        className="flex flex-col items-center justify-between w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 customwidth:mt-[0vh] md:flex-row"
       >
         <div className="hero-content text-left flex flex-col justify-center items-start font-heading will-change-[width] min-h-[200px]"
         >
           <motion.h1
             ref={headingRef}
-            className="2xl:text-5xl font-bold text-black mb-6 leading-snug font-heading sm:text-3xl xs:text-3xl md:text-5xl"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-6 2xl:leading-snug lg:leading-tight md:leading-tight sm:leading-tight xs:leading-tight font-heading"
             initial={{ opacity: 1 }}
           >
             {/* Text will be populated by typewriter effect */}
           </motion.h1>
           <motion.p
             ref={paragraphRef}
-            className="2xl:text-xl font-body text-black max-w-full sm:text-lg xs:text-sm md:text-xl"
+            className="text-sm sm:text-base md:text-lg lg:text-xl font-body text-black max-w-full customwidth:w-screen"
             initial={{ opacity: 1 }}
           >
             {/* Text will be populated by typewriter effect */}
           </motion.p>
         </div>
-        <div className=" justify-center mt-8 md:mt-0 will-change-[width,opacity] min-h-[200px] items-center hidden md:flex">
+        <div className="justify-center mt-8 md:mt-0 will-change-[width,opacity] min-h-[200px] items-center hidden md:flex customwidth:flex ">
           <img 
             ref={imageRef} 
             src={heroimg} 
             alt="Hero" 
-            className="max-w-full h-auto opacity-0 transform" 
+            className="max-w-full 2xl:h-[70vh] lg:h-[70vh] opacity-0 transform customwidth:h-[21rem]" 
           />
         </div>
       </div>
       
       {/* Optimized Carousel Section */}
-      <div className="w-full overflow-hidden lg:mt-10 2xl:mt-5 md:mt-36 sm:mt-48 xs:mt-40">
+      <div className="w-full overflow-hidden mt-24 sm:mt-32 xs:mt-[30vh]  md:mt-24 lg:mt-12 customwidth:mt-[11vh]">
         <div
           ref={carouselRef}
           className="flex flex-nowrap items-center"
@@ -254,8 +261,8 @@ const Herosection = () => {
         >
           {/* First set of items */}
           {carouselItems.map((_, index) => (
-            <div key={`set1-${index}`} className="carousel-item flex items-center flex-shrink-0 px-8">
-              <span className="carousel-text text-lg font-semibold text-black uppercase whitespace-nowrap mr-6">
+            <div key={`set1-${index}`} className="carousel-item flex items-center flex-shrink-0 px-4 sm:px-8">
+              <span className="carousel-text text-base sm:text-lg font-semibold text-black uppercase whitespace-nowrap mr-4 sm:mr-6">
                 Let's Build Together
               </span>
               <img 
@@ -267,8 +274,8 @@ const Herosection = () => {
           ))}
           {/* Second set of items for seamless loop */}
           {carouselItems.map((_, index) => (
-            <div key={`set2-${index}`} className="carousel-item flex items-center flex-shrink-0 px-8">
-              <span className="carousel-text text-lg font-semibold text-black uppercase whitespace-nowrap mr-6">
+            <div key={`set2-${index}`} className="carousel-item flex items-center flex-shrink-0 px-4 sm:px-8">
+              <span className="carousel-text text-base sm:text-lg font-semibold text-black uppercase whitespace-nowrap mr-4 sm:mr-6">
                 Let's Build Together
               </span>
               <img 

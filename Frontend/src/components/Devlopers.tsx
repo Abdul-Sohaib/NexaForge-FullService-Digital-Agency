@@ -104,7 +104,7 @@ const Developers = () => {
       scrollTrigger: {
         trigger: section,
         start: isMobile ? 'top 20%' : 'top 20%',
-        end: isMobile ? '+=8000' : '+=2500', // Increased mobile scroll distance
+        end: isMobile ? '+=3000' : '+=2500', // Increased mobile scroll distance
         scrub: isMobile ? 1.5 : 1.2, // Adjusted scrub for mobile
         pin: true, // Pin on both mobile and desktop
         anticipatePin: 1,
@@ -371,7 +371,7 @@ const Developers = () => {
     <div ref={sectionRef} className="w-full relative z-25 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-center items-center relative">
         {/* Centered Heading */}
-        <div className="flex w-full justify-center items-center relative mb-16 2xl:-mt-40 lg:-mt-40 md:-mt-[30rem] sm:-mt-[30rem] xs:-mt-[30rem]" ref={headingRef}>
+        <div className="flex w-full justify-center items-center relative mb-16 2xl:-mt-40 lg:-mt-40 md:-mt-[30rem] sm:-mt-[30rem] xs:-mt-[30rem] customwidth:-mt-[40rem]" ref={headingRef}>
           <h2 className="2xl:text-7xl lg:text-6xl md:text-6xl sm:text-4xl xs:text-3xl font-bold text-black font-heading text-center leading-tight z-20">
             Who We Are
           </h2>
@@ -390,7 +390,7 @@ const Developers = () => {
           {/* Left Card - Pratik */}
           <div
             ref={leftCardRef}
-            className={`flex flex-col justify-between p-6 rounded-3xl shadow-xl hover:shadow-2xl w-full 2xl:h-[25rem] lg:h-[22rem] md:h-[24rem] sm:h-[20rem] xs:h-[20rem] 2xl:top-0 lg:top-0 md:top-28 sm:top-0 xs:-top-20  relative overflow-hidden group  cursor-pointer bg-[#0668E3] button-55 ${window.innerWidth <= 768 ? 'max-w-sm mx-auto absolute' : ''}`}
+            className={`flex flex-col justify-between p-6 rounded-3xl shadow-xl hover:shadow-2xl w-full 2xl:h-[25rem] lg:h-[22rem] md:h-[24rem] sm:h-[20rem] xs:h-[20rem] 2xl:top-0 lg:top-0 md:top-28 sm:top-0 xs:-top-20 customwidth:-top-[20vh]  relative overflow-hidden group  cursor-pointer bg-[#0668E3] button-55 ${window.innerWidth <= 768 ? 'max-w-sm mx-auto absolute' : ''}`}
             style={getCardStyle(0)}
             onMouseEnter={() => handleCardHover(0)}
             onMouseLeave={handleCardLeave}
@@ -428,7 +428,7 @@ const Developers = () => {
           {/* Middle Card - Sohaib */}
           <div
             ref={middleCardRef}
-            className={`flex flex-col justify-between p-6 rounded-3xl shadow-xl hover:shadow-2xl w-full 2xl:h-[25rem] lg:h-[22rem] md:h-[24rem] sm:h-[20rem] xs:h-[20rem] 2xl:-mt-20 lg:-mt-20  md:top-10  relative overflow-hidden group cursor-pointer bg-[#FFF0B5] button-55 ${window.innerWidth <= 768 ? 'max-w-sm mx-auto absolute' : ''}`}
+            className={`flex flex-col justify-between p-6 rounded-3xl shadow-xl hover:shadow-2xl w-full 2xl:h-[25rem] lg:h-[22rem] md:h-[24rem] sm:h-[20rem] xs:h-[20rem] 2xl:-mt-20 lg:-mt-20  md:top-10 customwidth:-top-[10vh]  relative overflow-hidden group cursor-pointer bg-[#FFF0B5] button-55 ${window.innerWidth <= 768 ? 'max-w-sm mx-auto absolute' : ''}`}
             style={getCardStyle(1)}
             onMouseEnter={() => handleCardHover(1)}
             onMouseLeave={handleCardLeave}
@@ -467,7 +467,7 @@ const Developers = () => {
           {/* Right Card - Abhijit */}
           <div
             ref={rightCardRef}
-            className={`flex flex-col justify-between p-6 rounded-3xl shadow-xl hover:shadow-2xl w-full 2xl:h-[25rem] lg:h-[22rem] md:h-[24rem] sm:h-[20rem] xs:h-[20rem] 2xl:top-0 lg:top-0 md:top-0 sm:top-0  xs:top-10  relative overflow-hidden group cursor-pointer bg-[#8EBFDD] button-55 ${window.innerWidth <= 768 ? 'max-w-sm mx-auto absolute' : ''}`}
+            className={`flex flex-col justify-between p-6 rounded-3xl shadow-xl hover:shadow-2xl w-full 2xl:h-[25rem] lg:h-[22rem] md:h-[24rem] sm:h-[20rem] xs:h-[20rem] 2xl:top-0 lg:top-0 md:top-0 sm:top-0  xs:top-10 customwidth:-top-[4vh]  relative overflow-hidden group cursor-pointer bg-[#8EBFDD] button-55 ${window.innerWidth <= 768 ? 'max-w-sm mx-auto absolute' : ''}`}
             style={getCardStyle(2)}
             onMouseEnter={() => handleCardHover(2)}
             onMouseLeave={handleCardLeave}

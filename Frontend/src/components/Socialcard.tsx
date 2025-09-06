@@ -98,8 +98,8 @@ const Socialcard = () => {
       scrollTrigger: {
         trigger: section,
         start: isMobile ? 'top 30%' : 'top 10%',
-        end: isMobile ? '+=22000' : '+=4500',
-        scrub: isMobile ? 1.0 : 1.2,
+        end: isMobile ? '+=5000' : '+=4500',
+        scrub: isMobile ? 1.6 : 1.2,
         pin: true,
         anticipatePin: 1,
         markers: false,
@@ -174,9 +174,9 @@ const Socialcard = () => {
             { y: 300, x: 0 }, // Cafe card 3
           ],
           end: [
-            { y: isVerySmallScreen ? 160 : 180, x: 0 },  // Cafe card 1 - reduced for very small screens
-            { y: isVerySmallScreen ? -170 : -150, x: 0 },   // Cafe card 2 - reduced for very small screens
-            { y: isVerySmallScreen ? -520 : -500, x: 0 },  // Cafe card 3 - reduced for very small screens
+            { y: isVerySmallScreen ? 160 : 100, x: 0 },  // Cafe card 1 - reduced for very small screens
+            { y: isVerySmallScreen ? -170 : -230, x: 0 },   // Cafe card 2 - reduced for very small screens
+            { y: isVerySmallScreen ? -520 : -530, x: 0 },  // Cafe card 3 - reduced for very small screens
           ]
         },
         restaurants: {
@@ -186,9 +186,9 @@ const Socialcard = () => {
             { y: 320, x: 0 }, // Restaurant card 3
           ],
           end: [
-            { y: isVerySmallScreen ? 80 : 100, x: 0 },  // Restaurant card 1 - reduced for very small screens
-            { y: isVerySmallScreen ? -240 : -220, x: 0 },   // Restaurant card 2 - reduced for very small screens
-            { y: isVerySmallScreen ? -600 : -580, x: 0 },  // Restaurant card 3 - reduced for very small screens
+            { y: isVerySmallScreen ? 80 : 160, x: 0 },  // Restaurant card 1 - reduced for very small screens
+            { y: isVerySmallScreen ? -240 : -190, x: 0 },   // Restaurant card 2 - reduced for very small screens
+            { y: isVerySmallScreen ? -600 : -510, x: 0 },  // Restaurant card 3 - reduced for very small screens
           ]
         },
         ui: {
@@ -198,9 +198,9 @@ const Socialcard = () => {
             { y: 100, x: 0 }, // UI card 3
           ],
           end: [
-            { y: isVerySmallScreen ? 80 : 100, x: 0 },  // UI card 1 - reduced for very small screens
-            { y: isVerySmallScreen ? -230 : -210, x: 0 },   // UI card 2 - reduced for very small screens
-            { y: isVerySmallScreen ? -570 : -550, x: 0 },  // UI card 3 - reduced for very small screens
+            { y: isVerySmallScreen ? 80 : -90, x: 0 },  // UI card 1 - reduced for very small screens
+            { y: isVerySmallScreen ? -160 : -400, x: 0 },   // UI card 2 - reduced for very small screens
+            { y: isVerySmallScreen ? -430 : -700, x: 0 },  // UI card 3 - reduced for very small screens
           ]
         },
       };
@@ -359,11 +359,11 @@ const Socialcard = () => {
 
         <div className="flex justify-center items-center flex-grow">
           {/* Cafe Cards - Positioned just below heading in mobile */}
-          <div ref={cafeCardsRef} className={`absolute px-6 grid ${window.innerWidth <= 768 ? 'grid-cols-1 place-items-center gap-4 2xl:mt-12 lg:mt-12 md:mt-12 sm:mt-10 xs:-mt-0' : '2xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-1 gap-5'} w-screen max-w-7xl ${window.innerWidth <= 768 ? 'left-1/2 transform -translate-x-1/2' : ''}`}>
+          <div ref={cafeCardsRef} className={`absolute px-6 xs:px-9 grid ${window.innerWidth <= 768 ? 'grid-cols-1 place-items-center gap-4 2xl:mt-12 lg:mt-12 md:mt-0 md:-top-[5rem] sm:mt-10 xs:-mt-[0rem] xs:-top-[6rem] customwidth:top-[1rem] ' : '2xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-1 gap-5'} w-screen max-w-7xl ${window.innerWidth <= 768 ? 'left-1/2 transform -translate-x-1/2' : ''}`}>
             {cafeCards.map((card, index) => (
               <div
                 key={index}
-                className={`card-item w-full shadow-2xl rounded-3xl flex items-center justify-center hover:shadow-3xl transition-all duration-300 border-2 border-white 2xl:h-[25rem] lg:h-[20rem] md:h-[20rem] sm:h-[20rem] xs:h-[18rem] overflow-hidden relative object-cover ${card.backgroundClass} ${window.innerWidth <= 768 ? 'max-w-sm mx-auto' : ''}`}
+                className={`card-item w-full shadow-2xl rounded-3xl flex items-center justify-center hover:shadow-3xl transition-all duration-300 border-2 border-white 2xl:h-[25rem] lg:h-[20rem] md:h-[20rem] sm:h-[20rem] xs:h-[19rem] overflow-hidden relative object-cover ${card.backgroundClass} ${window.innerWidth <= 768 ? 'max-w-sm mx-auto' : ''}`}
                 style={window.innerWidth <= 768 ? { transform: `translateX(${index === 0 ? '-100px' : index === 1 ? '0px' : '100px'})` } : {}}
               >
                 <div className="absolute inset-0 bg-white/10 backdrop-blur-xl z-0"></div>
@@ -380,11 +380,11 @@ const Socialcard = () => {
           </div>
 
           {/* Restaurant Cards - Positioned just below heading in mobile */}
-          <div ref={restaurantCardsRef} className={`absolute px-6 grid ${window.innerWidth <= 768 ? 'grid-cols-1 place-items-center gap-4 2xl:mt-44 lg:mt-44 md:-mt-10 sm:-mt-10 xs:mt-0 xs:top-8 2xl:top-0 lg:-top-20' : '2xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-1 gap-5'} w-screen max-w-7xl ${window.innerWidth <= 768 ? 'left-1/2 transform -translate-x-1/2' : ''}`}>
+          <div ref={restaurantCardsRef} className={`absolute px-6 xs:px-9 grid ${window.innerWidth <= 768 ? 'grid-cols-1 place-items-center gap-4 2xl:mt-44 lg:mt-44 md:-mt-10 sm:-mt-10 xs:mt-0 xs:-top-[2rem] 2xl:top-0 lg:-top-20' : '2xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-1 gap-5'} w-screen max-w-7xl ${window.innerWidth <= 768 ? 'left-1/2 transform -translate-x-1/2' : ''}`}>
             {restaurantCards.map((card, index) => (
               <div
                 key={index}
-                className={`card-item w-full shadow-2xl rounded-3xl flex items-center justify-center hover:shadow-3xl transition-all duration-300 border-2 border-white 2xl:h-[25rem] lg:h-[20rem] md:h-[20rem] sm:h-[20rem] xs:h-[18rem] overflow-hidden relative object-cover ${card.backgroundClass} ${window.innerWidth <= 768 ? 'max-w-sm mx-auto' : ''}`}
+                className={`card-item w-full shadow-2xl rounded-3xl flex items-center justify-center hover:shadow-3xl transition-all duration-300 border-2 border-white 2xl:h-[25rem] lg:h-[20rem] md:h-[20rem] sm:h-[20rem] xs:h-[19rem] overflow-hidden relative object-cover ${card.backgroundClass} ${window.innerWidth <= 768 ? 'max-w-sm mx-auto' : ''}`}
                 style={window.innerWidth <= 768 ? { transform: `translateX(${index === 0 ? '-120px' : index === 1 ? '20px' : '120px'})` } : {}}
               >
                 <div className="absolute inset-0 bg-white/10 backdrop-blur-xl z-0"></div>
@@ -403,9 +403,9 @@ const Socialcard = () => {
           {/* UI Cards - Positioned just below heading in mobile */}
           <div
             ref={uiCardsRef}
-            className={`absolute px-6 grid ${
+            className={`absolute px-6 xs:px-9 grid ${
               window.innerWidth <= 768
-                ? 'grid-cols-1 place-items-center gap-4 2xl:mt-52 lg:mt-52 md:mt-52 sm:mt-20 xs:mt-40'
+                ? 'grid-cols-1 place-items-center gap-4 2xl:mt-52 lg:mt-52 md:mt-[0rem] md:top-[11rem] sm:mt-20 xs:mt-0 xs:-top-[0rem] customwidth:top-[20rem]'
                 : '2xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-1 gap-5'
             } w-screen ${
               window.innerWidth <= 768 ? 'left-1/2 transform -translate-x-1/2' : ''
@@ -414,7 +414,7 @@ const Socialcard = () => {
             {uiCards.map((card, index) => (
               <div
                 key={index}
-                className={`card-item w-full shadow-2xl rounded-3xl flex items-center justify-center hover:shadow-3xl transition-all duration-300 border-2 border-white 2xl:h-[24rem] lg:h-[16rem] md:h-[18rem] sm:h-[20rem] xs:h-[15rem] overflow-hidden relative object-cover ${card.backgroundClass} ${
+                className={`card-item w-full shadow-2xl rounded-3xl flex items-center justify-center hover:shadow-3xl transition-all duration-300 border-2 border-white 2xl:h-[24rem] lg:h-[16rem] md:h-[18rem] sm:h-[20rem] xs:h-[16rem] xs:w-full overflow-hidden relative object-cover ${card.backgroundClass} ${
                   window.innerWidth <= 768 ? 'max-w-sm mx-auto' : ''
                 }`}
                 style={

@@ -13,8 +13,9 @@ export default {
       },
       // Custom breakpoints for better responsive control
       screens: {
-        'xs': '375px',      // Extra small devices
-        'sm': '425px',      // Extra small devices
+        'xs': '375px', 
+        'customwidth':'412px',     // Extra small devices
+        'sm': '640px',      // Extra small devices
               // Small devices (default)
         'md': '768px',      // Medium devices (default)
         'lg': '1024px',     // Large devices (default)
