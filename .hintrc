@@ -14,7 +14,8 @@
         "ignore": [
           "backdrop-filter",
           "scrollbar-width",
-          "scrollbar-width: none"
+          "scrollbar-width: none",
+          "image-rendering: crisp-edges"
         ]
       }
     ],
