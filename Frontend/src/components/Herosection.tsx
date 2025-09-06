@@ -70,7 +70,7 @@ const Herosection = () => {
       
       // Check screen width using md breakpoint (768px)
       const isMobile = window.innerWidth <= 768;
-      const customMobile = window.innerWidth === 412;
+      const customMobile = window.innerWidth <=412;
 
       // Initially set up the layout
       gsap.set(heroContent, { 
@@ -253,7 +253,7 @@ const Herosection = () => {
       </div>
       
       {/* Optimized Carousel Section */}
-      <div className="w-full overflow-hidden mt-24 sm:mt-32 xs:mt-[30vh]  md:mt-24 lg:mt-12 customwidth:mt-[11vh]">
+      <div className="w-full overflow-hidden mt-24 sm:mt-32 xs:mt-[30vh]  md:mt-24 lg:mt-12 customwidth:mt-[6vh]">
         <div
           ref={carouselRef}
           className="flex flex-nowrap items-center"

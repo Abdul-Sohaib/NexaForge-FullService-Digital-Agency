@@ -927,3 +927,26 @@ body::-webkit-scrollbar {
 .banter-loader__box:nth-child(9) {
   animation: moveBox-9 4s infinite;
 }
+
+
+.button-55,
+.button-56 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
