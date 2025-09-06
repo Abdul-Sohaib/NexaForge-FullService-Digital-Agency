@@ -70,7 +70,7 @@ const Herosection = () => {
       
       // Check screen width using md breakpoint (768px)
       const isMobile = window.innerWidth <= 768;
-      const customMobile = window.innerWidth <=412;
+      const customMobile = window.innerWidth >=412;
 
       // Initially set up the layout
       gsap.set(heroContent, { 
