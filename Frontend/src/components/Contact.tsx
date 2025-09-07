@@ -123,7 +123,7 @@ export function Contact({ isOpen, onClose }: ContactProps) {
       {/* Contact Modal */}
       <motion.div
         ref={contactRef}
-        className="fixed 2xl:top-2 lg:top-4 md:top-4 sm:top-8 right-3 2xl:h-[45rem] lg:h-[38rem] md:[38rem] sm:[20rem] w-full md:w-[500px] sm:w-[400px] xs:w-[350px] bg-[#EEE8DA] shadow-2xl z-50 overflow-y-auto rounded-2xl"
+        className="fixed 2xl:top-2 lg:top-4 md:top-4 sm:top-8 xs:top-2 right-3 2xl:h-[45rem] lg:h-[42rem] md:[38rem] sm:[20rem] w-full md:w-[500px] sm:w-[400px] xs:w-[350px] bg-[#EEE8DA] shadow-2xl z-50 overflow-y-auto rounded-2xl"
         style={{ display: 'none' }}
       >
         <div className="p-8 h-full flex flex-col">

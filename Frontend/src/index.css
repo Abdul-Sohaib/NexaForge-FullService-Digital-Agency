@@ -950,3 +950,21 @@ img {
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
 }
+
+
+ .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+
+ .scrollbar-hide2 {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+          scroll-behavior: smooth;
+        }
+        .scrollbar-hide2::-webkit-scrollbar {
+          display: none;
+        }

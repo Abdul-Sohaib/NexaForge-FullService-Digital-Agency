@@ -22,7 +22,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="w-full bg-[#E6E1DD] text-white relative flex  rounded-3xl border-2 border-black">
+    <footer className="max-w-full 2xl:px-28 lg:px-40 md:px-40 sm:px-10 xs:px-5 justify-center bg-[#E6E1DD] text-white relative flex  rounded-3xl border-2 border-black">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-10 left-10 w-32 h-32 border-2 border-white rounded-full animate-pulse"></div>
@@ -31,7 +31,7 @@ export function Footer() {
         <div className="absolute bottom-20 right-1/3 w-20 h-20 border-2 border-white rounded-full animate-pulse delay-700"></div>
       </div>
 
-      <div className="2xl:px-8 lg:px-20 md:px-8 sm:px-8 xs:px-8 py-12 relative z-10">
+      <div className="2xl:px-0 lg:px-20 md:px-8 sm:px-8 xs:px-2 py-12 relative z-10">
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 gap-3 mb-12">
 

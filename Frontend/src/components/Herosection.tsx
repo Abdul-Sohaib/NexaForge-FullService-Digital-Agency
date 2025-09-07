@@ -219,7 +219,7 @@ const Herosection = () => {
   return (
     <div
       ref={heroRef}
-      className="hero-section relative flex flex-col items-center justify-center min-h-[60vh] bg-transparent mt-28 sm:mt-32 md:mt-40 lg:mt-[12vh]"
+      className="hero-section relative flex flex-col items-center justify-center min-h-[60vh] bg-transparent mt-28 2xl:mt-[16vh] sm:mt-32 md:mt-[15rem] lg:mt-[16vh]"
     >
       <div 
         ref={containerRef}
@@ -257,7 +257,7 @@ const Herosection = () => {
                customwidth:mt-[9vh]
                xs:mt-[2vh]
                sm:mt-[10vh]
-               md:mt-[10vh]
+               md:mt-[30vh]
                lg:mt-[10vh]
                xl:mt-[10vh]
                2xl:mt-[8vh]

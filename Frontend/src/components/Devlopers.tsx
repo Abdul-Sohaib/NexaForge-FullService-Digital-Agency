@@ -1,7 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { motion, useAnimation, useInView, type Variants, type Transition } from 'framer-motion';
 import whoweareimg from '../assets/whoweareimg.png';
 import devloper1 from '../assets/pratikdemo.png';
 import devloper2 from '../assets/devloper2.png';
@@ -10,317 +8,120 @@ import toolsdev1 from '../assets/Pratik.png';
 import toolsdev2 from '../assets/Sohaib.png';
 import toolsdev3 from '../assets/Abhijit.png';
 
-// Register ScrollTrigger with GSAP
-gsap.registerPlugin(ScrollTrigger);
-
 const Developers = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const cardContainerRef = useRef<HTMLDivElement>(null);
-  const middleCardRef = useRef<HTMLDivElement>(null);
-  const leftCardRef = useRef<HTMLDivElement>(null);
-  const rightCardRef = useRef<HTMLDivElement>(null);
-  
-  // State to track which card is being hovered
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  // Framer Motion controls
+  const headingControls = useAnimation();
+  const leftCardControls = useAnimation();
+  const middleCardControls = useAnimation();
+  const rightCardControls = useAnimation();
+
+  // Use InView hook to trigger animations once
+  const inView = useInView(sectionRef, { once: true, margin: '-20% 0px' });
+
+  // State to track which card is being hovered and mobile detection
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [currentMobileCard, setCurrentMobileCard] = useState(0);
+
+  // Detect mobile screen size
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth <= 500);
+    };
+
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    
+    return () => {
+      window.removeEventListener('resize', checkScreenSize);
+    };
+  }, []);
+
+  // Define the transition object with proper typing
+  const transition: Transition = {
+    duration: 0.8,
+    ease: 'easeOut',
+  };
+
+  // Animation variant with explicit Variants type
+  const fadeUp: Variants = {
+    hidden: { opacity: 0, y: 60 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition,
+    },
+  };
 
   // Editable card data with customizable properties
   const developerCards = [
-    {
-      heading: 'Pratik Dutta',
-      subtext: 'As Co-Founder of NexaForge, I turn brands into scroll-stoppers with smart social media management.',
-      image: devloper1,
-      backgroundClass: 'dev-bg-1',
-      headingColor: '#111111',
-      subtextColor: '#1A73E8',
-      toolImage: toolsdev1,
-    },
+  
     {
       heading: 'Md Abdul Sohaib',
       subtext: 'As Founder of NexaForge, I craft digital experiences through modern websites and apps.',
       image: devloper2,
       backgroundClass: 'dev-bg-2',
-      headingColor: '#FFFFFF',
-      subtextColor: '#0984E3',
+      headingColor: '#111111',
+      subtextColor: '#111111',
       toolImage: toolsdev2,
     },
+
     {
       heading: 'Abhijit Das',
       subtext: 'At NexaForge, I bring creativity to life through stunning UX/UI and impactful graphic design.',
       image: devloper3,
       backgroundClass: 'dev-bg-3',
-      headingColor: '#000000',
-      subtextColor: '#0984E3',
+      headingColor: '#111111',
+      subtextColor: '#111111',
       toolImage: toolsdev3,
+    },
+      {
+      heading: 'Pratik Dutta',
+      subtext: 'As Co-Founder of NexaForge, I turn brands into scroll-stoppers with smart social media management.',
+      image: devloper1,
+      backgroundClass: 'dev-bg-1',
+      headingColor: '#111111',
+      subtextColor: '#111111',
+      toolImage: toolsdev1,
     },
   ];
 
+  // Trigger animations when in view
   useEffect(() => {
-    const section = sectionRef.current;
-    const heading = headingRef.current;
-    const cardContainer = cardContainerRef.current;
-    const middleCard = middleCardRef.current;
-    const leftCard = leftCardRef.current;
-    const rightCard = rightCardRef.current;
-
-    if (!section || !heading || !cardContainer || !middleCard || !leftCard || !rightCard) return;
-
-    const cardElements = [leftCard, middleCard, rightCard];
-    const isMobile = window.innerWidth <= 768;
-
-    // Initialize elements with starting states
-    gsap.set(section, { opacity: 0 });
-    gsap.set(heading, { 
-      opacity: 0, 
-      y: 50,
-      scale: 0.95 
-    });
-    gsap.set(cardElements, { 
-      opacity: 0, 
-      y: 60, 
-      scale: 0.9,
-    });
-
-    // Fallback timer
-    const fallback = setTimeout(() => {
-      gsap.to(section, { opacity: 1, duration: 0.6, ease: 'power2.out' });
-    }, 5000);
-
-    // Section visibility trigger
-    ScrollTrigger.create({
-      trigger: section,
-      start: isMobile ? 'top bottom+=10vh' : 'top bottom+=20vh',
-      onEnter: () => {
-        clearTimeout(fallback);
-        gsap.to(section, { opacity: 1, duration: 0.8, ease: 'power3.out' });
-      },
-      onLeaveBack: () => {
-        gsap.to(section, { opacity: 0, duration: 0.4, ease: 'power2.in' });
-      },
-    });
-
-    // Main timeline with scroll control - MOVED BEFORE animation functions
-    const mainTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: isMobile ? 'top 20%' : 'top 20%',
-        end: isMobile ? '+=3000' : '+=2500', // Increased mobile scroll distance
-        scrub: isMobile ? 1.5 : 1.2, // Adjusted scrub for mobile
-        pin: true, // Pin on both mobile and desktop
-        anticipatePin: 1,
-        markers: false,
-        invalidateOnRefresh: true,
-        snap: isMobile ? undefined : {
-          snapTo: 'labels',
-          duration: { min: 0.5, max: 1.0 },
-          ease: 'power3.inOut',
-          delay: 0.15,
-        },
-      },
-    });
-
-    // Mobile-specific card animation function with screen size customization
-    const animateCardsMobile = (cardElements: HTMLElement[]) => {
-      // Get current screen width at the time of animation
-      const currentScreenWidth = window.innerWidth;
-      console.log('Current screen width:', currentScreenWidth); // Debug log
-      
-      // Different positions based on screen width
-      let positions;
-      if (currentScreenWidth > 425) {
-        console.log('Using positions for screens <= 425px'); // Debug log
-        // Smaller ending positions for screens ≤ 425px
-        positions = {
-          start: [
-            { y: 0, x: 0 }, // Card 1
-            { y: 0, x: 0 }, // Card 2
-            { y: 0, x: 0 }, // Card 3
-          ],
-          end: [
-            { y: 250, x: 0 },  // Card 1 - reduced from 370
-            { y: -80, x: 0 },  // Card 2 - reduced from -30
-            { y: -400, x: 0 }, // Card 3 - reduced from -400
-          ]
-        };
-      } else {
-        console.log('Using positions for screens > 425px'); // Debug log
-        // Original positions for screens > 425px
-        positions = {
-          start: [
-            { y: 0, x: 0 }, // Card 1
-            { y: 0, x: 0 }, // Card 2
-            { y: 0, x: 0 }, // Card 3
-          ],
-          end: [
-            { y: 370, x: 0 },  // Card 1 positioned below heading
-            { y: -30, x: 0 }, // Card 2
-            { y: -400, x: 0 }, // Card 3
-          ]
-        };
-      }
-
-      // Show heading first
-      mainTimeline
-        .addLabel('heading-start')
-        .to(heading, {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 1.0,
-          ease: 'power3.out',
-        })
-        .to(cardContainer, { 
-          opacity: 1,
-          duration: 0.1
-        }, '-=0.5');
-
-      // Animate each card one by one
-      cardElements.forEach((card, index) => {
-        // Set initial position for each card
-        const startPos = positions.start[index];
-        if (!startPos) return;
-        
-        gsap.set(card, { 
-          y: startPos.y,
-          x: startPos.x,
-          opacity: 0, 
-          scale: 0.9
-        });
-
-        // Get ending position for each card
-        const endPos = positions.end[index];
-        if (!endPos) return;
-
-        mainTimeline
-          // Card slides to position just below heading
-          .to(card, { 
-            opacity: 1, 
-            y: endPos.y, 
-            x: endPos.x,
-            scale: 1,
-            duration: 1.2,
-            ease: 'power3.out' 
-          }, index === 0 ? '-=0.2' : '+=0.2')
-          .addLabel(`card${index + 1}-visible`)
-          // Hold card in position
-          .to({}, { 
-            duration: 2.5
-          });
-
-        // If not the last card, fade it out before showing next
-        if (index < cardElements.length - 1) {
-          mainTimeline
-            .to(card, { 
-              opacity: 0, 
-              y: -50,
-              scale: 0.9,
-              duration: 0.8,
-              ease: 'power3.inOut' 
-            })
-            .addLabel(`card${index + 1}-fadeout`);
+    const runAnimations = async () => {
+      if (inView) {
+        try {
+          // Sequential animation: heading first, then all cards together
+          await headingControls.start('visible');
+          if (!isMobile) {
+            await Promise.all([
+              leftCardControls.start('visible'),
+              middleCardControls.start('visible'),
+              rightCardControls.start('visible'),
+            ]);
+          } else {
+            // On mobile, show cards immediately without complex animation
+            leftCardControls.start('visible');
+            middleCardControls.start('visible');
+            rightCardControls.start('visible');
+          }
+        } catch (error) {
+          console.error('Animation sequence error:', error);
         }
-      });
-
-      // After all cards shown, fade out last card and heading together
-      mainTimeline
-        .to([heading, cardElements[cardElements.length - 1]], { 
-          opacity: 0, 
-          y: -50,
-          scale: 0.95,
-          duration: 1.0,
-          ease: 'power3.inOut' 
-        })
-        .addLabel('exit-complete');
+      }
     };
 
-    // Desktop animation function (unchanged)
-    const animateCardsDesktop = () => {
-      mainTimeline
-        .addLabel('entry-start')
-        .to(heading, {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 1.5,
-          ease: 'power3.out',
-        })
-        .addLabel('heading-complete')
-        .to({}, { duration: 0.5 })
-        .to(middleCard, {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          rotationY: 0,
-          duration: 1.2,
-          ease: 'power3.out',
-        })
-        .addLabel('middle-card-visible')
-        .to(leftCard, {
-          opacity: 1,
-          x: 0,
-          y: 0,
-          scale: 1,
-          rotation: 0,
-          duration: 1.2,
-          ease: 'power3.out',
-        }, '-=0.6')
-        .to(rightCard, {
-          opacity: 1,
-          x: 0,
-          y: 0,
-          scale: 1,
-          rotation: 0,
-          duration: 1.2,
-          ease: 'power3.out',
-        }, '-=0.9')
-        .addLabel('all-cards-visible')
-        .to({}, { duration: 1.5 })
-        .to(heading, {
-          opacity: 0,
-          y: -40,
-          scale: 0.95,
-          duration: 1.0,
-          ease: 'power3.inOut',
-        })
-        .to([leftCard, rightCard], {
-          opacity: 0,
-          y: -35,
-          x: (_index, target) => target === leftCard ? -50 : 50,
-          scale: 0.9,
-          rotation: (_index, target) => target === leftCard ? -3 : 3,
-          duration: 1.0,
-          ease: 'power3.inOut',
-        }, '-=0.5')
-        .to(middleCard, {
-          opacity: 0,
-          y: -40,
-          scale: 0.88,
-          rotationY: -10,
-          duration: 1.1,
-          ease: 'power3.inOut',
-        }, '-=0.6')
-        .addLabel('exit-complete');
-    };
-
-    // Choose animation based on device type
-    if (isMobile) {
-      animateCardsMobile(cardElements);
-    } else {
-      animateCardsDesktop();
-    }
-
-    // Cleanup function
-    return () => {
-      clearTimeout(fallback);
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-      gsap.killTweensOf([section, heading, cardContainer, middleCard, leftCard, rightCard]);
-      mainTimeline.kill();
-    };
-  }, []);
+    runAnimations();
+  }, [inView, isMobile, headingControls, leftCardControls, middleCardControls, rightCardControls]);
 
   // Handle card hover effects (only for desktop)
   const handleCardHover = (cardIndex: number) => {
-    setHoveredCard(cardIndex);
+    if (window.innerWidth > 768) {
+      setHoveredCard(cardIndex);
+    }
   };
 
   const handleCardLeave = () => {
@@ -329,10 +130,10 @@ const Developers = () => {
 
   // Get card styling based on hover state
   const getCardStyle = (cardIndex: number) => {
-    const isMobile = window.innerWidth <= 768;
-    
+    const isMobileView = window.innerWidth <= 768;
+
     // Disable hover effects on mobile
-    if (isMobile) {
+    if (isMobileView) {
       return {
         transform: 'scale(1)',
         filter: 'blur(0px)',
@@ -349,7 +150,7 @@ const Developers = () => {
         zIndex: 1,
       };
     }
-    
+
     if (hoveredCard === cardIndex) {
       return {
         transform: 'scale(1.05)',
@@ -358,7 +159,7 @@ const Developers = () => {
         zIndex: 10,
       };
     }
-    
+
     return {
       transform: 'scale(0.98)',
       filter: 'blur(2px)',
@@ -367,142 +168,226 @@ const Developers = () => {
     };
   };
 
+  // Get mobile card styling based on current card in view
+  const getMobileCardStyle = (cardIndex: number) => {
+    if (!isMobile) return {};
+    
+    if (currentMobileCard === cardIndex) {
+      return {
+        transform: 'scale(1.05)',
+        transition: 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+        zIndex: 10,
+      };
+    }
+
+    return {
+      transform: 'scale(0.95)',
+      transition: 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+      zIndex: 1,
+    };
+  };
+
+  // Handle touch events for mobile swiping
+  const handleTouchStart = (cardIndex: number) => {
+    if (isMobile) {
+      setCurrentMobileCard(cardIndex);
+    }
+  };
+
+  // Mobile Card Render Function
+  const renderMobileCards = () => (
+    <div className="w-full relative">
+      <div 
+        ref={scrollContainerRef}
+        className="overflow-x-auto scrollbar-hide2 p-10"
+      >
+        <div className="flex gap-4 px-4" style={{ width: `${developerCards.length * 100}vw` }}>
+          {developerCards.map((card, index) => (
+            <div
+              key={index}
+              className="flex-shrink-0"
+              style={{ width: 'calc(100vw - 2rem)' }}
+            >
+              <div
+                className={`flex flex-col justify-between p-6 rounded-3xl shadow-xl 
+                  w-full h-96 mx-2
+                  overflow-hidden cursor-pointer
+                  ${card.backgroundClass} button-55`}
+                style={getMobileCardStyle(index)}
+                onTouchStart={() => handleTouchStart(index)}
+              >
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 h-full flex flex-col justify-between">
+                  <div>
+                    <h3
+                      className="text-3xl text-center font-bold mb-4 font-heading"
+                      style={{ color: card.headingColor }}
+                    >
+                      {card.heading}
+                    </h3>
+                    <p
+                      className="text-md font-body font-semibold leading-relaxed mb-4"
+                      style={{ color: card.subtextColor }}
+                    >
+                      {card.subtext}
+                    </p>
+                  </div>
+                  <div className="flex items-end justify-between mt-2">
+                    <div className="flex-shrink-0 flex">
+                      <img
+                        src={card.image}
+                        alt={card.heading}
+                        className="w-48 h-48 rounded-full object-cover border-2 border-black"
+                        loading="eager"
+                      />
+                      <img
+                        src={card.toolImage}
+                        alt={`${card.heading} tools`}
+                        className="w-48 h-48 rounded-full object-cover relative -ml-20 -rotate-12"
+                        loading="eager"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="absolute bottom-0 right-0 w-16 h-16 bg-white/5 rounded-full transform translate-x-4 translate-y-4"></div>
+                <div className="absolute top-0 right-0 w-12 h-12 bg-white/5 rounded-full transform translate-x-2 -translate-y-2"></div>
+                {index === 1 && (
+                  <div className="absolute top-1/2 left-0 w-10 h-10 bg-white/5 rounded-full transform -translate-x-2"></div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      {/* Mobile Pagination Dots - Fixed position */}
+      <div className="flex justify-center mt-6 gap-2 w-full">
+        {developerCards.map((_, index) => (
+          <div
+            key={index}
+            className={`h-2 rounded-full transition-all duration-300 ${
+              currentMobileCard === index ? 'bg-black w-6' : 'bg-gray-400 w-2'
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+
+  // Desktop Card Render Function
+  const renderDesktopCards = () => (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 md:grid-cols-2 gap-2 place-items-center w-full">
+      {developerCards.map((card, index) => (
+        <motion.div
+          key={index}
+          className={`flex flex-col justify-between p-6 rounded-3xl shadow-xl 
+            scale-100 transition-transform duration-500 ease-in-out 
+            hover:shadow-2xl hover:scale-125 
+            w-full max-w-[30vw] 2xl:h-[55vh] 2xl:w-7xl md:max-w-[30rem] md:h-[25rem] h-80 sm:h-96 lg:h-[25rem] 
+            overflow-hidden group cursor-pointer
+            ${card.backgroundClass} button-55`}
+          style={getCardStyle(index)}
+          onMouseEnter={() => handleCardHover(index)}
+          onMouseLeave={handleCardLeave}
+          initial="hidden"
+          animate={
+            index === 0 ? leftCardControls : index === 1 ? middleCardControls : rightCardControls
+          }
+          variants={fadeUp}
+        >
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 h-full flex flex-col justify-between">
+            <div>
+              <h3
+                className="text-2xl 2xl:text-3xl lg:text-3xl sm:text-3xl text-center font-bold mb-4 font-heading"
+                style={{ color: card.headingColor }}
+              >
+                {card.heading}
+              </h3>
+              <p
+                className="text-sm 2xl:text-sm lg:text-sm sm:text-base font-body font-semibold leading-relaxed mb-4"
+                style={{ color: card.subtextColor }}
+              >
+                {card.subtext}
+              </p>
+            </div>
+            <div className="flex items-end justify-between mt-10">
+              <div className="flex-shrink-0 flex">
+                <img
+                  src={card.image}
+                  alt={card.heading}
+                  className="w-32 sm:w-40 lg:w-48 h-32 sm:h-40 lg:h-48 rounded-full object-cover border-2 border-black"
+                  loading="eager"
+                />
+                <img
+                  src={card.toolImage}
+                  alt={`${card.heading} tools`}
+                  className="w-40 sm:w-44 lg:w-60 h-40 sm:h-44 lg:h-60 rounded-full object-cover relative right-16 sm:right-20 lg:right-24 -rotate-12"
+                  loading="eager"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="absolute bottom-0 right-0 w-32 h-32 bg-white/5 rounded-full transform translate-x-8 translate-y-8"></div>
+          <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-full transform translate-x-4 -translate-y-4"></div>
+          {index === 1 && (
+            <div className="absolute top-1/2 left-0 w-20 h-20 bg-white/5 rounded-full transform -translate-x-4"></div>
+          )}
+        </motion.div>
+      ))}
+    </div>
+  );
+
+  // Handle scroll events for mobile pagination - Updated for better accuracy
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const handleScroll = () => {
+      const container = scrollContainerRef.current;
+      if (!container) return;
+
+      const scrollLeft = container.scrollLeft;
+      const containerWidth = container.clientWidth;
+      const cardWidth = containerWidth - 32; // Account for padding
+      
+      // Calculate which card is most in view
+      const centerPosition = scrollLeft + containerWidth / 2;
+      const cardIndex = Math.round(centerPosition / cardWidth);
+      const clampedIndex = Math.max(0, Math.min(cardIndex, developerCards.length - 1));
+      
+      setCurrentMobileCard(clampedIndex);
+    };
+
+    const scrollContainer = scrollContainerRef.current;
+    if (scrollContainer) {
+      scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
+      return () => scrollContainer.removeEventListener('scroll', handleScroll);
+    }
+  }, [isMobile, developerCards.length]);
+
   return (
-    <div ref={sectionRef} className="w-full relative z-25 min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-center items-center relative">
+    <div ref={sectionRef} className="w-full relative z-20 min-h-screen">
+      <div className={`max-w-screen mx-auto ${!isMobile ? 'px-4 sm:px-6 lg:px-8' : ''} py-12 flex flex-col items-center ${isMobile ? 'gap-8' : 'gap-[11vh]'}`}>
         {/* Centered Heading */}
-        <div className="flex w-full justify-center items-center relative mb-16 2xl:-mt-40 lg:-mt-40 md:-mt-[30rem] sm:-mt-[30rem] xs:-mt-[60rem] customwidth:-mt-[40rem]" ref={headingRef}>
-          <h2 className="2xl:text-7xl lg:text-6xl md:text-6xl sm:text-4xl xs:text-4xl font-bold text-black font-heading text-center leading-tight z-20">
+        <motion.div
+          className={`relative flex justify-center items-center ${isMobile ? 'px-4' : ''}`}
+          initial="hidden"
+          animate={headingControls}
+          variants={fadeUp}
+        >
+          <h2 className={`${isMobile ? 'text-5xl' : 'text-4xl sm:text-5xl'} z-20 md:text-6xl lg:text-7xl font-bold text-black font-heading text-center leading-tight`}>
             Who We Are
           </h2>
           <img
             src={whoweareimg}
-            alt=""
-            className="2xl:w-36 lg:w-28 md:w-28 sm:w-20 xs:w-24 absolute 2xl:-top-16 2xl:right-60 lg:-top-14 lg:right-40 md:-top-14 md:right-14 sm:-top-10 sm:-right-5 xs:-top-12 xs:-right-1 z-10 rotate-3"
+            alt="Who We Are decoration"
+            className={`${isMobile ? 'w-24 -top-9 -right-14' : 'w-20 2xl:w-40 sm:w-24 md:w-28 lg:w-36'} absolute z-10 2xl:-top-20 2xl:-right-36 lg:-top-16 lg:-right-28 md:-top-14 md:-right-20 rotate-3`}
           />
-        </div>
+        </motion.div>
 
-        {/* Card Container */}
-        <div
-          ref={cardContainerRef}
-          className={`${window.innerWidth <= 768 ? 'absolute left-1/2 transform -translate-x-1/2' : 'grid'} ${window.innerWidth <= 768 ? '' : '2xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1'} 2xl:mt-0 lg:mt-0 md:mt-0  sm:mt-10 xs:mt-0 2xl:gap-5 lg:gap-6 md:gap-6 sm:gap-8 xs:gap-0  px-4 w-screen justify-items-center`}
-        >
-          {/* Left Card - Pratik */}
-          <div
-            ref={leftCardRef}
-            className={`flex flex-col justify-between p-6 rounded-3xl shadow-xl hover:shadow-2xl w-full 2xl:h-[25rem] lg:h-[22rem] md:h-[24rem] sm:h-[20rem] xs:h-[25rem] 2xl:top-0 lg:top-0 md:top-28 sm:top-0 xs:-top-20   relative overflow-hidden group  cursor-pointer bg-[#0668E3] button-55 ${window.innerWidth <= 768 ? 'max-w-sm mx-auto absolute' : ''}`}
-            style={getCardStyle(0)}
-            onMouseEnter={() => handleCardHover(0)}
-            onMouseLeave={handleCardLeave}
-          >
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 h-full flex flex-col justify-between">
-              <div>
-                <h3 className="2xl:text-3xl lg:text-2xl md:text-3xl sm:text-2xl xs:text-4xl font-bold text-black mb-4 font-heading">
-                  {developerCards[0].heading}
-                </h3>
-                <p className="text-black/70 2xl:text-sm lg:text-xs md:text-xs sm:text-xs xs:text-sm font-body font-semibold leading-relaxed mb-4">
-                  {developerCards[0].subtext}
-                </p>
-              </div>
-              <div className="flex items-end justify-between">
-                <div className="flex-shrink-0 flex">
-                  <img
-                    src={developerCards[0].image}
-                    alt={developerCards[0].heading}
-                    className="2xl:w-48 lg:w-32 md:w-40 sm:w-40 xs:w-48 h-full rounded-full object-cover border-2 border-black"
-                    loading="eager"
-                  />
-                  <img
-                    src={developerCards[0].toolImage}
-                    alt={`${developerCards[0].heading} tools`}
-                    className="2xl:w-60 2xl:h-60 lg:w-40 lg:h-40 md:w-44 md:h-44 sm:w-44 sm:h-44 xs:w-48 xs:h-48 rounded-full object-cover relative 2xl:right-24 lg:right-16 md:right-16 sm:right-16 xs:right-20 -rotate-12"
-                    loading="eager"
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="absolute bottom-0 right-0 w-32 h-32 bg-white/5 rounded-full transform translate-x-8 translate-y-8"></div>
-            <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-full transform translate-x-4 -translate-y-4"></div>
-          </div>
-
-          {/* Middle Card - Sohaib */}
-          <div
-            ref={middleCardRef}
-            className={`flex flex-col justify-between p-6 rounded-3xl shadow-xl hover:shadow-2xl w-full 2xl:h-[25rem] lg:h-[22rem] md:h-[24rem] sm:h-[20rem] xs:h-[25rem] 2xl:-mt-20 lg:-mt-20  md:top-10 xs:-top-[10vh]  relative overflow-hidden group cursor-pointer bg-[#FFF0B5] button-55 ${window.innerWidth <= 768 ? 'max-w-sm mx-auto absolute' : ''}`}
-            style={getCardStyle(1)}
-            onMouseEnter={() => handleCardHover(1)}
-            onMouseLeave={handleCardLeave}
-          >
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 h-full flex flex-col justify-between">
-              <div>
-                <h3 className="2xl:text-3xl lg:text-2xl md:text-3xl sm:text-2xl xs:text-3xl font-bold text-black mb-4 font-heading">
-                  {developerCards[1].heading}
-                </h3>
-                <p className="text-black/70 2xl:text-sm lg:text-xs md:text-xs sm:text-xs xs:text-sm font-body font-semibold leading-relaxed mb-4">
-                  {developerCards[1].subtext}
-                </p>
-              </div>
-              <div className="flex items-end justify-between">
-                <div className="flex-shrink-0 flex">
-                  <img
-                    src={developerCards[1].image}
-                    alt={developerCards[1].heading}
-                    className="2xl:w-48 2xl:h-48 lg:w-32 md:w-40 sm:w-40 sm:h-40 xs:w-48 xs:h-48 h-full rounded-full object-cover border-2 border-black"
-                    loading="eager"
-                  />
-                  <img
-                    src={developerCards[1].toolImage}
-                    alt={`${developerCards[1].heading} tools`}
-                    className="2xl:w-60 2xl:h-60 lg:w-40 lg:h-40 md:w-44 md:h-44 sm:w-44 sm:h-44 xs:w-48 xs:h-48 rounded-full object-cover relative 2xl:right-24 lg:right-16 md:right-20 sm:right-20 xs:right-20"
-                    loading="eager"
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="absolute bottom-0 right-0 w-36 h-36 bg-white/5 rounded-full transform translate-x-10 translate-y-10"></div>
-            <div className="absolute top-0 right-0 w-28 h-28 bg-white/5 rounded-full transform translate-x-6 -translate-y-6"></div>
-            <div className="absolute top-1/2 left-0 w-20 h-20 bg-white/5 rounded-full transform -translate-x-4"></div>
-          </div>
-
-          {/* Right Card - Abhijit */}
-          <div
-            ref={rightCardRef}
-            className={`flex flex-col justify-between p-6 rounded-3xl shadow-xl hover:shadow-2xl w-full 2xl:h-[25rem] lg:h-[22rem] md:h-[24rem] sm:h-[20rem] xs:h-[25rem] 2xl:top-0 lg:top-0 md:top-0 sm:top-0  xs:-top-[16vh] customwidth:-top-[4vh]  relative overflow-hidden group cursor-pointer bg-[#8EBFDD] button-55 ${window.innerWidth <= 768 ? 'max-w-sm mx-auto absolute' : ''}`}
-            style={getCardStyle(2)}
-            onMouseEnter={() => handleCardHover(2)}
-            onMouseLeave={handleCardLeave}
-          >
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 h-full flex flex-col justify-between">
-              <div>
-                <h3 className="2xl:text-3xl lg:text-2xl md:text-3xl sm:text-2xl xs:text-4xl font-bold text-black mb-4 font-heading">
-                  {developerCards[2].heading}
-                </h3>
-                <p className="text-black/70 2xl:text-sm lg:text-xs md:text-xs sm:text-xs xs:text-sm font-body font-semibold leading-relaxed mb-4">
-                  {developerCards[2].subtext}
-                </p>
-              </div>
-              <div className="flex items-end justify-between">
-                <div className="flex-shrink-0 flex">
-                  <img
-                    src={developerCards[2].image}
-                    alt={developerCards[2].heading}
-                    className="2xl:w-48 lg:w-32 md:w-40 sm:w-40 xs:w-48 h-full rounded-full object-cover border-2 border-black"
-                    loading="eager"
-                  />
-                  <img
-                    src={developerCards[2].toolImage}
-                    alt={`${developerCards[2].heading} tools`}
-                    className="2xl:w-60 2xl:h-60 lg:w-40 lg:h-40 md:w-44 md:h-44 sm:w-44 sm:h-44 xs:w-48 xs:h-48 rounded-full object-cover relative 2xl:right-24 lg:right-16 md:right-20 sm:right-20 xs:right-20"
-                    loading="eager"
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="absolute bottom-0 right-0 w-32 h-32 bg-white/5 rounded-full transform translate-x-8 translate-y-8"></div>
-            <div className="absolute top-0 left-0 w-24 h-24 bg-white/5 rounded-full transform -translate-x-4 -translate-y-4"></div>
-          </div>
-        </div>
+        {/* Card Container - Responsive */}
+        {isMobile ? renderMobileCards() : renderDesktopCards()}
       </div>
+
+    
     </div>
   );
 };

@@ -7,7 +7,6 @@ import Herosection from './Herosection';
 import Serviceprovide from './Serviceprovide';
 import Socialcard from './Socialcard';
 import Developers from './Devlopers';
-import SketchLine from './SketchLine';
 import Reviews from './Reviews';
 import { Contact } from './Contact';
 
@@ -46,10 +45,7 @@ export function Dashboard() {
         <Navbar onContactOpen={handleContactOpen} />
       </div>
       
-      {/* SketchLine positioned to cover the entire page - Lower z-index */}
-      <div className="fixed inset-0 w-full h-full pointer-events-none z-5">
-        <SketchLine startRef={lineStartRef} endRef={lineEndRef} />
-      </div>
+   
       
       {/* Main content container with proper spacing and z-index management */}
       <div className="flex-grow relative ">
@@ -65,24 +61,24 @@ export function Dashboard() {
         </div>
         
         {/* Socialcard section - z-index 20 (highest for pinning) - Increased spacing */}
-        <div ref={socialCardRef} className="relative z-20 2xl:mt-[25rem] lg:mt-[70rem] md:mt-[80rem] sm:mt-[80rem] xs:mt-[15rem] "> {/* Increased from 10rem to 15rem */}
+        <div ref={socialCardRef} className="relative z-20  2xl:mt-[20rem] lg:mt-[20rem] md:mt-[20rem] sm:mt-[80rem] xs:mt-[15rem] "> {/* Increased from 10rem to 15rem */}
           <div ref={lineEndRef}>
             <Socialcard />
           </div>
         </div>
         
         {/* Developers section - z-index 25 - Added extra spacing to prevent background color overlap */}
-        <div ref={developersRef} className="relative z-25 2xl:mt-[10rem] lg:mt-[10rem] md:mt-[60rem]"> {/* Added significant margin */}
+        <div ref={developersRef} className="relative  2xl:mt-[20rem] lg:mt-[20rem] md:mt-[30rem] sm:mt-[40rem] xs:mt-[20rem]"> {/* Added significant margin */}
           <Developers />
         </div>
         
         {/* Reviews section - z-index 30 - Increased spacing */}
-        <div ref={reviewsRef} className="relative z-30 2xl:mt-[0rem] lg:mt-[0rem] md:mt-[0rem] sm:mt-[0rem] xs:-mt-[0rem] "> {/* Increased from 16 to 20rem */}
+        <div ref={reviewsRef} className="relative z-30 2xl:mt-[10rem] lg:mt-[10rem] md:mt-[20rem] sm:mt-[0rem] xs:-mt-[0rem] "> {/* Increased from 16 to 20rem */}
           <Reviews />
         </div>
 
         {/* Footer - z-index 35 */}
-        <div ref={footerTriggerRef} className="relative z-35 mt-20">
+        <div ref={footerTriggerRef} className="relative flex justify-center  max-w-screen z-35 mt-40">
           <Footer />
         </div>
       </div>

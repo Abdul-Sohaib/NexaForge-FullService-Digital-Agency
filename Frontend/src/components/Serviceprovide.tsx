@@ -351,7 +351,7 @@ const Serviceprovide = forwardRef<HTMLDivElement>((_props, ref) => {
             </div>
             <div className="text-center flex flex-col w-fit h-full">
               <div className="grid grid-cols-1 w-full items-center h-fit text-right gap-6">
-                <h3 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xs:text-5xl font-bold text-black mb-2 font-heading">We Do Creative</h3>
+                <h3 className="text-4xl sm:text-5xl md:text-7xl lg:text-7xl xs:text-6xl font-bold text-black mb-2 font-heading">We Do Creative</h3>
                 <p
                   ref={subtextRef}
                   className="text-[#4A44DE] text-2xl md:text-3xl font-bold font-heading min-h-[32px] flex items-center justify-center tracking-wide sketch-border"
@@ -392,10 +392,10 @@ const Serviceprovide = forwardRef<HTMLDivElement>((_props, ref) => {
             >
               <div className="text-center flex flex-col w-full justify-evenly h-full">
                 <div className="grid grid-cols-1 w-full items-center h-fit text-right gap-6">
-                  <h3 className="text-4xl sm:text-5xl md:text-7xl lg:text-5xl 2xl:text-7xl xs:text-5xl font-bold text-black mb-2 font-heading">We craft stunning</h3>
+                  <h3 className="text-4xl sm:text-5xl md:text-5xl lg:text-7xl 2xl:text-7xl xs:text-5xl font-bold text-black mb-2 font-heading">We craft stunning</h3>
                   <p
                     ref={subtext2Ref}
-                    className="text-[#CDFE64] text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl font-bold font-heading min-h-[32px] flex items-center justify-center tracking-wide sketch-border"
+                    className="text-[#CDFE64] text-2xl sm:text-3xl lg:text-4xl md:text-3xl 2xl:text-5xl font-bold font-heading min-h-[32px] flex items-center justify-center tracking-wide sketch-border"
                     style={{
                       textShadow: "0 2px 6px rgba(0,0,0,0.08)",
                       backfaceVisibility: "hidden",
@@ -406,7 +406,7 @@ const Serviceprovide = forwardRef<HTMLDivElement>((_props, ref) => {
                   </p>
                 </div>
                 <div className="absolute -top-3 -left-12 sm:-left-8 md:top-1 md:left-1 -z-10">
-                  <img src={wedobento2} alt="Fuel Your Hustle" className="flex w-44 h-40 sm:w-52 sm:h-44 md:w-60 md:h-52 lg:w-44 lg:h-48 2xl:w-52 2xl:h-56 rounded-xl" />
+                  <img src={wedobento2} alt="Fuel Your Hustle" className="flex w-44 h-40 sm:w-52 sm:h-44 md:w-60 md:h-52 lg:w-52 lg:h-56 2xl:w-52 2xl:h-56 rounded-xl" />
                 </div>
                 <div className="flex flex-col gap-2 text-sm text-black font-bold font-body mt-4 text-left">
                   <motion.span
@@ -427,7 +427,7 @@ const Serviceprovide = forwardRef<HTMLDivElement>((_props, ref) => {
             >
               <div className="text-center flex flex-col w-full justify-evenly h-full">
                 <div className="grid grid-cols-1 w-full items-center h-fit text-right gap-6">
-                  <h3 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xs:text-5xl font-bold text-black mb-2 font-heading">We Do Creative</h3>
+                  <h3 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xs:text-6xl font-bold text-black mb-2 font-heading">We Do Creative</h3>
                   <p
                     ref={subtext3Ref}
                     className="text-[#530304] text-2xl md:text-3xl font-bold font-heading min-h-[32px] flex items-center justify-center tracking-wide sketch-border"
@@ -441,7 +441,7 @@ const Serviceprovide = forwardRef<HTMLDivElement>((_props, ref) => {
                   </p>
                 </div>
                 <div className="absolute -top-5 -left-12 sm:-left-10 md:top-1 md:left-1 -z-10">
-                  <img src={wedobento3} alt="Sound of the Streets" className="flex w-40 h-40 md:w-52 md:h-52 lg:w-40 lg:h-40 2xl:w-56 2xl:h-56 rounded-xl" />
+                  <img src={wedobento3} alt="Sound of the Streets" className="flex w-40 h-40 md:w-52 md:h-52 lg:w-48 lg:h-48 2xl:w-56 2xl:h-56 rounded-xl" />
                 </div>
                 <div className="flex flex-col gap-2 text-sm text-black font-bold font-body mt-8 sm:mt-10 md:mt-20 lg:mt-5 text-left">
                   <motion.span
