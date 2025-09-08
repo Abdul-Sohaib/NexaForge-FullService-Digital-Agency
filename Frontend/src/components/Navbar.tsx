@@ -91,7 +91,7 @@ export function Navbar({ onContactOpen }: NavbarProps) {
           });
         } else {
           gsap.to(nav, {
-            gap: '1.5rem',
+            gap: '1rem',
             duration: 1.2,
             ease: 'power2.inOut',
           });
@@ -170,7 +170,7 @@ export function Navbar({ onContactOpen }: NavbarProps) {
       className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-tr from-[#ffffff] via-[#fdfcf7] to-[#f9f5ec] rounded-xl overflow-visible shadow-[0_4px_12px_rgba(0,0,0,0.08),0_2px_4px_rgba(0,0,0,0.04)] mt-2 sm:mt-4 md:mt-6 xs:mt-6 mx-2 sm:mx-4 xs:mx-3  "
     >
       <div className="2xl:px-10 xs:px-6 sm:px-4  lg:px-8 2xl:p-3 lg:p-3 md:px-2 sm:p-0 xs:p-0">
-        <div className="flex items-center justify-center 2xl:gap-[6rem] lg:gap-[4rem] md:gap-[4rem] sm:gap-[4rem] xs:gap-[6rem] h-12 xs:h-14 sm:h-16 w-full">
+        <div className="flex items-center justify-center 2xl:gap-[6rem] lg:gap-[4rem] md:gap-[4rem] sm:gap-[4rem] xs:gap-[5rem] h-12 xs:h-14 sm:h-16 w-full">
           {/* Logo */}
           <div className="flex-shrink-0 flex justify-center items-center">
             <img src={logo} alt="MyApp Logo" className="2xl:w-20 lg:w-16 md:w-16 sm:w-16 xs:w-20  h-auto cursor-pointer" />

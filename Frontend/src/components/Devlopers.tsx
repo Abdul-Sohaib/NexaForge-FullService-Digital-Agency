@@ -210,7 +210,7 @@ const Developers = () => {
             >
               <div
                 className={`flex flex-col justify-between p-6 rounded-3xl shadow-xl 
-                  w-full h-96 mx-2
+                  w-full h-fit mx-2
                   overflow-hidden cursor-pointer
                   ${card.backgroundClass} button-55`}
                 style={getMobileCardStyle(index)}
@@ -231,8 +231,8 @@ const Developers = () => {
                       {card.subtext}
                     </p>
                   </div>
-                  <div className="flex items-end justify-between mt-2">
-                    <div className="flex-shrink-0 flex">
+                  <div className="flex items-end justify-between mt-2 ">
+                    <div className="flex-shrink-0 flex ">
                       <img
                         src={card.image}
                         alt={card.heading}
