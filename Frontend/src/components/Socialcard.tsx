@@ -46,7 +46,7 @@ const Socialcard = () => {
   // Check for screen size and reduced motion preference
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobile(window.innerWidth <= 500);
+      setIsMobile(window.innerWidth <= 600);
     };
 
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -212,7 +212,7 @@ const Socialcard = () => {
       image: cafedemo3, 
       backgroundClass: 'cafedemo3back', 
       control: cafeCard3Control,
-      title: "Cranto’s Café - Flavour Momos",
+      title: "Cranto's Café - Flavour Momos",
       description: "Soft, steaming hot momos paired with spicy chutney. Every bite is a little explosion of flavor."
     },
   ];
@@ -296,7 +296,29 @@ const Socialcard = () => {
     }
   };
 
-// Mobile Card Render Function - Updated with click functionality
+  // Pagination Dots Component
+  const PaginationDots = ({ totalCards, activeIndex, onDotClick }: { 
+    totalCards: number, 
+    activeIndex: number | null, 
+    onDotClick: (index: number) => void 
+  }) => (
+    <div className="flex justify-center gap-2 py-4">
+      {Array.from({ length: totalCards }).map((_, index) => (
+        <button
+          key={index}
+          onClick={() => onDotClick(index)}
+          className={`w-5 h-1 rounded-full transition-all duration-300 ${
+            activeIndex === index 
+              ? 'bg-blue-500 scale-125' 
+              : 'bg-gray-600  '
+          }`}
+          aria-label={`Go to card ${index + 1}`}
+        />
+      ))}
+    </div>
+  );
+
+// Mobile Card Render Function - Updated with pagination dots
 const renderMobileCardSection = (
   cards: any[], 
   hoveredCard: number | null, 
@@ -328,13 +350,20 @@ const renderMobileCardSection = (
               </div>
               {/* Optional: Add a click indicator */}
               <div className="absolute top-4 right-4 z-20">
-                <div className={`w-3 h-3 rounded-full transition-all duration-300 ${hoveredCard === index ? 'bg-blue-500' : 'bg-white/50'}`}></div>
+                <div className={`w-3  rounded-full transition-all duration-300 ${hoveredCard === index ? 'bg-blue-500' : 'bg-white/50 '}`}></div>
               </div>
             </div>
           </div>
         ))}
       </div>
     </div>
+    
+    {/* Pagination Dots - Fixed position below cards, above text */}
+    <PaginationDots 
+      totalCards={cards.length}
+      activeIndex={hoveredCard}
+      onDotClick={(index) => setHoveredCard(index === hoveredCard ? null : index)}
+    />
     
     {/* Text Container - Show only when a card is selected */}
     {hoveredCard !== null && (

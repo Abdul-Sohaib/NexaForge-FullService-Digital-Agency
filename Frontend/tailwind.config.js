@@ -14,8 +14,8 @@ export default {
       // Custom breakpoints for better responsive control
 screens: {
   // xs now includes the custom range condition (375px to 500px)
-  'xs': { 'min': '375px', 'max': '500px' },   // applies from 375px to 500px only
-  'sm': { 'min': '501px' },                   // ≥ 425px
+  'xs': { 'min': '300px', 'max': '600px' },   // applies from 375px to 500px only
+  'sm': { 'min': '601px' },                   // ≥ 425px
   'md': { 'min': '768px' },                   // ≥ 768px
   'lg': { 'min': '1024px' },                  // ≥ 1024px
   'xl': { 'min': '1280px' },                  // ≥ 1280px

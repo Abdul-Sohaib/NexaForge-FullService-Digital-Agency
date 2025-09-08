@@ -29,7 +29,7 @@ const Developers = () => {
   // Detect mobile screen size
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobile(window.innerWidth <= 500);
+      setIsMobile(window.innerWidth <= 600);
     };
 
     checkScreenSize();
