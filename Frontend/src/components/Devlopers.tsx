@@ -25,6 +25,9 @@ const Developers = () => {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [currentMobileCard, setCurrentMobileCard] = useState(0);
+  
+  // Image loading states
+  const [loadedImages, setLoadedImages] = useState<{[key: string]: boolean}>({});
 
   // Detect mobile screen size
   useEffect(() => {
@@ -88,6 +91,14 @@ const Developers = () => {
       toolImage: toolsdev1,
     },
   ];
+
+  // Handle image load
+  const handleImageLoad = (imageKey: string) => {
+    setLoadedImages(prev => ({
+      ...prev,
+      [imageKey]: true
+    }));
+  };
 
   // Trigger animations when in view
   useEffect(() => {
@@ -194,6 +205,34 @@ const Developers = () => {
     }
   };
 
+  // Render image with loader
+  const renderImageWithLoader = (
+    src: string,
+    alt: string,
+    className: string,
+    imageKey: string,
+  ) => {
+    const isLoaded = loadedImages[imageKey];
+    
+    return (
+      <div className="relative">
+        
+        <img
+          src={src}
+          alt={alt}
+          className={`${className} ${isLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}
+          loading="eager"
+          onLoad={() => handleImageLoad(imageKey)}
+          style={{ 
+            position: !isLoaded ? 'absolute' : 'relative',
+            top: !isLoaded ? 0 : 'auto',
+            left: !isLoaded ? 0 : 'auto'
+          }}
+        />
+      </div>
+    );
+  };
+
   // Mobile Card Render Function
   const renderMobileCards = () => (
     <div className="w-full relative">
@@ -231,20 +270,21 @@ const Developers = () => {
                       {card.subtext}
                     </p>
                   </div>
-                  <div className="flex items-end justify-between mt-2 ">
+                  <div className="flex items-end justify-between mt-2 w-full">
                     <div className="flex-shrink-0 flex ">
-                      <img
-                        src={card.image}
-                        alt={card.heading}
-                        className="w-48 h-48 rounded-full object-cover border-2 border-black"
-                        loading="eager"
-                      />
-                      <img
-                        src={card.toolImage}
-                        alt={`${card.heading} tools`}
-                        className="w-48 h-48 rounded-full object-cover relative -ml-20 -rotate-12"
-                        loading="eager"
-                      />
+                      {renderImageWithLoader(
+                        card.image,
+                        card.heading,
+                        "w-[12rem] h-[12rem] rounded-full object-cover border-2 border-black",
+                        `mobile-${index}-profile`
+                      )}
+                      {renderImageWithLoader(
+                        card.toolImage,
+                        `${card.heading} tools`,
+                        "w-[12rem] h-[12rem] rounded-full object-cover relative -ml-20 -rotate-12",
+                        `mobile-${index}-tool`,
+                      
+                      )}
                     </div>
                   </div>
                 </div>
@@ -309,20 +349,21 @@ const Developers = () => {
                 {card.subtext}
               </p>
             </div>
-            <div className="flex items-end justify-between mt-10">
+            <div className="flex items-end justify-between p-5 w-full">
               <div className="flex-shrink-0 flex">
-                <img
-                  src={card.image}
-                  alt={card.heading}
-                  className="w-32 sm:w-40 lg:w-48 h-32 sm:h-40 lg:h-48 rounded-full object-cover border-2 border-black"
-                  loading="eager"
-                />
-                <img
-                  src={card.toolImage}
-                  alt={`${card.heading} tools`}
-                  className="w-40 sm:w-44 lg:w-60 h-40 sm:h-44 lg:h-60 rounded-full object-cover relative right-16 sm:right-20 lg:right-24 -rotate-12"
-                  loading="eager"
-                />
+                {renderImageWithLoader(
+                  card.image,
+                  card.heading,
+                  "w-32 sm:w-40 lg:w-48 h-32 sm:h-40 lg:h-48 rounded-full object-cover border-2 border-black",
+                  `desktop-${index}-profile`
+                )}
+                {renderImageWithLoader(
+                  card.toolImage,
+                  `${card.heading} tools`,
+                  "w-40 sm:w-44 lg:w-60 h-40 sm:h-44 lg:h-60 rounded-full object-cover relative right-16 sm:right-20 lg:right-24 -rotate-12",
+                  `desktop-${index}-tool`,
+                  
+                )}
               </div>
             </div>
           </div>

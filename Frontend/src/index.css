@@ -968,3 +968,24 @@ img {
         .scrollbar-hide2::-webkit-scrollbar {
           display: none;
         }
+
+ @keyframes shine {
+          0% {
+            background-position: 200% 0;
+          }
+          100% {
+            background-position: -200% 0;
+          }
+        }
+        .animate-shine {
+          animation: shine 1.5s linear infinite;
+        }
+
+ @keyframes shimmer {
+          0% {
+            background-position: -200% 0;
+          }
+          100% {
+            background-position: 200% 0;
+          }
+        }

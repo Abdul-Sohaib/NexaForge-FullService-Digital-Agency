@@ -156,7 +156,7 @@ export function Footer() {
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4" />
                 <a href="mailto:hello@techcraft.agency" className="hover:scale-110 transition-all">
-                  nexaforge87@gmail.com
+                  nexaforgelabs@gmail.com
                 </a>
               </div>
               <div className="flex items-center gap-2">
@@ -167,7 +167,7 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" />
-                <span>Guwahati, Assam</span>
+                <span>Jorhat, Assam</span>
               </div>
             </div>
 

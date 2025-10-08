@@ -13,9 +13,9 @@ export default {
       },
       // Custom breakpoints for better responsive control
 screens: {
-  // xs now includes the custom range condition (375px to 500px)
-  'xs': { 'min': '300px', 'max': '600px' },   // applies from 375px to 500px only
-  'sm': { 'min': '601px' },                   // ≥ 425px
+  // xs now includes the custom range condition (300px to 600px)
+  'xs': { 'min': '300px', 'max': '600px' },   // applies from 300px to 600px only
+  'sm': { 'min': '601px' },                   // ≥ 601px
   'md': { 'min': '768px' },                   // ≥ 768px
   'lg': { 'min': '1024px' },                  // ≥ 1024px
   'xl': { 'min': '1280px' },                  // ≥ 1280px

@@ -341,7 +341,7 @@ const Serviceprovide = forwardRef<HTMLDivElement>((_props, ref) => {
               <img
                 src={wedobento1}
                 alt="We Do Creative"
-                className="w-44 h-40 sm:w-52 sm:h-48 md:w-52 md:h-60 lg:w-60 lg:h-72 2xl:w-72 2xl:h-80 rounded-xl drop-shadow-lg relative top-12 lg:top-20 -z-10 -rotate-12"
+                className="w-44 h-56 sm:w-52 sm:h-48 md:w-52 md:h-60 lg:w-60 lg:h-72 2xl:w-72 2xl:h-80 rounded-xl drop-shadow-lg relative top-12 lg:top-20 -z-10 -rotate-12"
               />
               <img
                 src={wedobento1o1}
@@ -405,7 +405,7 @@ const Serviceprovide = forwardRef<HTMLDivElement>((_props, ref) => {
                   >
                   </p>
                 </div>
-                <div className="absolute -top-3 -left-12 sm:-left-8 md:top-1 md:left-1 -z-10">
+                <div className="absolute -top-3 -left-3 sm:-left-8 md:top-1 md:left-1 -z-10">
                   <img src={wedobento2} alt="Fuel Your Hustle" className="flex w-44 h-40 sm:w-52 sm:h-44 md:w-60 md:h-52 lg:w-52 lg:h-56 2xl:w-52 2xl:h-56 rounded-xl" />
                 </div>
                 <div className="flex flex-col gap-2 text-sm text-black font-bold font-body mt-4 text-left">
@@ -440,7 +440,7 @@ const Serviceprovide = forwardRef<HTMLDivElement>((_props, ref) => {
                   >
                   </p>
                 </div>
-                <div className="absolute -top-5 -left-12 sm:-left-10 md:top-1 md:left-1 -z-10">
+                <div className="absolute -top-5 -left-2 sm:-left-10 md:top-1 md:left-1 -z-10">
                   <img src={wedobento3} alt="Sound of the Streets" className="flex w-40 h-40 md:w-52 md:h-52 lg:w-48 lg:h-48 2xl:w-56 2xl:h-56 rounded-xl" />
                 </div>
                 <div className="flex flex-col gap-2 text-sm text-black font-bold font-body mt-8 sm:mt-10 md:mt-20 lg:mt-5 text-left">

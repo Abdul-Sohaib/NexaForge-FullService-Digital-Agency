@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion } from 'framer-motion';
@@ -15,11 +15,29 @@ const Herosection = () => {
   const imageRef = useRef<HTMLImageElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const imageContainerRef = useRef<HTMLDivElement>(null);
+  
+  // State for image loading
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
+  // Preload image for better performance
+  useEffect(() => {
+    const img = new Image();
+    img.onload = () => {
+      setImageLoaded(true);
+    };
+    img.onerror = () => {
+      setImageError(true);
+    };
+    img.src = heroimg;
+  }, []);
 
   useEffect(() => {
     const hero = heroRef.current;
     const container = containerRef.current;
-    if (!hero || !headingRef.current || !paragraphRef.current || !imageRef.current || !carouselRef.current || !container) return;
+    const imageContainer = imageContainerRef.current;
+    if (!hero || !headingRef.current || !paragraphRef.current || !imageRef.current || !carouselRef.current || !container || !imageContainer) return;
 
     // Function to disable scrolling
     const disableScroll = () => {
@@ -66,7 +84,6 @@ const Herosection = () => {
     // Animation sequence
     const animateSequence = async () => {
       const heroContent = headingRef.current!.parentElement!;
-      const imageContainer = imageRef.current!.parentElement!;
       
       // Check screen width using md breakpoint (768px)
       const isMobile = window.innerWidth <= 768;
@@ -96,14 +113,14 @@ const Herosection = () => {
       // Delay before repositioning
       await new Promise(resolve => setTimeout(resolve, 500));
       
-      // Create a smooth transition timeline
+      // Create a smooth transition timeline for image container
       const tl = gsap.timeline();
       
       // Animate layout based on screen size
       if (!isMobile || customMobile) {
         // Desktop animation (md and above) OR custom mobile (412px)
         const contentWidth = customMobile ? '100%' : '66.666667%'; // Adjust width for 412px
-        const imageWidth = customMobile ? '100%' : ' 33.333333%'; // Adjust width for 412px
+        const imageWidth = customMobile ? '100%' : '33.333333%'; // Adjust width for 412px
         
         tl.to(heroContent, {
           width: contentWidth,
@@ -134,30 +151,33 @@ const Herosection = () => {
       if (!isMobile || customMobile) {
         await new Promise(resolve => setTimeout(resolve, 200));
         
-        // Smooth fade in image with enhanced animation
-        await new Promise(resolve => {
-          const imageScale = customMobile ? 0.8 : 0.9; // Slightly smaller scale for 412px
-          const imageDuration = customMobile ? 1.2 : 1.5; // Faster animation for 412px
-          
-          gsap.fromTo(
-            imageRef.current,
-            { 
-              opacity: 0, 
-              scale: imageScale,
-              y: customMobile ? 20 : 30, // Less movement for 412px
-              rotationY: customMobile ? 10 : 15 // Less rotation for 412px
-            },
-            { 
-              opacity: 1, 
-              scale: 1,
-              y: 0,
-              rotationY: 0,
-              duration: imageDuration, 
-              ease: 'power3.out',
-              onComplete: () => resolve(true)
-            }
-          );
-        });
+        // Wait for image to be fully loaded before showing it
+        if (imageLoaded && !imageError) {
+          // Smooth fade in image with enhanced animation
+          await new Promise(resolve => {
+            const imageScale = customMobile ? 0.8 : 0.9; // Slightly smaller scale for 412px
+            const imageDuration = customMobile ? 1.2 : 1.5; // Faster animation for 412px
+            
+            gsap.fromTo(
+              imageRef.current,
+              { 
+                opacity: 0, 
+                scale: imageScale,
+                y: customMobile ? 20 : 30, // Less movement for 412px
+                rotationY: customMobile ? 10 : 15 // Less rotation for 412px
+              },
+              { 
+                opacity: 1, 
+                scale: 1,
+                y: 0,
+                rotationY: 0,
+                duration: imageDuration, 
+                ease: 'power3.out',
+                onComplete: () => resolve(true)
+              }
+            );
+          });
+        }
       }
 
       // Optimized seamless carousel animation
@@ -211,7 +231,19 @@ const Herosection = () => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
       gsap.killTweensOf(carouselRef.current);
     };
-  }, []);
+  }, [imageLoaded, imageError]); // Add imageLoaded and imageError to dependencies
+
+  // Handle image load - now just a fallback
+  const handleImageLoad = () => {
+    if (!imageLoaded) {
+      setImageLoaded(true);
+    }
+  };
+
+  // Handle image error
+  const handleImageError = () => {
+    setImageError(true);
+  };
   
   // Optimized carousel items - consistent styling
   const carouselItems = Array(8).fill(null); // Optimal number for smooth looping
@@ -242,26 +274,54 @@ const Herosection = () => {
             {/* Text will be populated by typewriter effect */}
           </motion.p>
         </div>
-        <div className="justify-center mt-8 md:mt-0 will-change-[width,opacity] min-h-[200px] items-center hidden md:flex customwidth:flex ">
-          <img 
-            ref={imageRef} 
-            src={heroimg} 
-            alt="Hero" 
-            className="max-w-full 2xl:h-[70vh] lg:h-[70vh] xs:h-[40vh] opacity-0 transform " 
-          />
+        
+        <div 
+          ref={imageContainerRef}
+          className="justify-center mt-8 md:mt-0 will-change-[width,opacity] min-h-[200px] items-center hidden md:flex"
+        >
+          {/* ImageLoader - shows until image is loaded */}
+        
+                   
+          {/* Error State */}
+          {imageError && (
+            <div className="max-w-full 2xl:h-[40vh] lg:h-[70vh] xs:h-[40vh] bg-gray-100 rounded-lg flex items-center justify-center">
+              <div className="text-center text-gray-500">
+                <svg 
+                  className="w-16 h-16 mx-auto mb-2 text-gray-400" 
+                  fill="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                </svg>
+                <p>Image failed to load</p>
+              </div>
+            </div>
+          )}
+                   
+          {/* Actual Image - shows only when fully loaded */}
+          {imageLoaded && !imageError && (
+            <img
+              ref={imageRef} 
+              src={heroimg} 
+              alt="Hero" 
+              className="max-w-full 2xl:h-[70vh] lg:h-[70vh] xs:h-[40vh] opacity-0"
+              onLoad={handleImageLoad}
+              onError={handleImageError}
+            />
+          )}
         </div>
       </div>
       
       {/* Optimized Carousel Section */}
-   <div className="w-full overflow-hidden
-               customwidth:mt-[9vh]
-               xs:mt-[2vh]
-               sm:mt-[10vh]
-               md:mt-[30vh]
-               lg:mt-[10vh]
-               xl:mt-[10vh]
-               2xl:mt-[8vh]
-               3xl:mt-[10vh]">
+      <div className="w-full overflow-hidden
+                  customwidth:mt-[9vh]
+                  xs:mt-[2vh]
+                  sm:mt-[10vh]
+                  md:mt-[30vh]
+                  lg:mt-[10vh]
+                  xl:mt-[10vh]
+                  2xl:mt-[8vh]
+                  3xl:mt-[10vh]">
 
         <div
           ref={carouselRef}
