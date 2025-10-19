@@ -14,8 +14,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 export function Dashboard() {
   const socialCardRef = useRef<HTMLDivElement>(null);
-  const lineStartRef = useRef<HTMLDivElement>(null);
-  const lineEndRef = useRef<HTMLDivElement>(null);
   const developersRef = useRef<HTMLDivElement>(null);
   const reviewsRef = useRef<HTMLDivElement>(null);
   const footerTriggerRef = useRef<HTMLDivElement>(null);
@@ -56,19 +54,19 @@ export function Dashboard() {
         </div>
         
         {/* Service provide section - z-index 15 */}
-        <div ref={lineStartRef} className="relative z-15">
+        <div  className="relative z-15">
           <Serviceprovide />
         </div>
         
         {/* Socialcard section - z-index 20 (highest for pinning) - Increased spacing */}
-        <div ref={socialCardRef} className="relative z-20  2xl:mt-[20rem] lg:mt-[20rem] md:mt-[20rem] sm:mt-[80rem] xs:mt-[15rem] "> {/* Increased from 10rem to 15rem */}
-          <div ref={lineEndRef}>
+        <div ref={socialCardRef} className="relative z-20  2xl:mt-[0rem] lg:mt-[10rem] md:mt-[20rem] sm:mt-[80rem] xs:mt-[15rem] "> {/* Increased from 10rem to 15rem */}
+          <div>
             <Socialcard />
           </div>
         </div>
         
         {/* Developers section - z-index 25 - Added extra spacing to prevent background color overlap */}
-        <div ref={developersRef} className="relative  2xl:mt-[20rem] lg:mt-[20rem] md:mt-[30rem] sm:mt-[40rem] xs:mt-[20rem]"> {/* Added significant margin */}
+        <div ref={developersRef} className="relative  2xl:mt-[0rem] lg:mt-[10rem] md:mt-[30rem] sm:mt-[40rem] xs:mt-[20rem]"> {/* Added significant margin */}
           <Developers />
         </div>
         

@@ -1,10 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useAnimation, useInView, type Variants, type Transition } from 'framer-motion';
 import whoweareimg from '../assets/whoweareimg.png';
-import devloper1 from '../assets/pratikdemo.png';
 import devloper2 from '../assets/devloper2.png';
 import devloper3 from '../assets/devloper3.png';
-import toolsdev1 from '../assets/Pratik.png';
 import toolsdev2 from '../assets/Sohaib.png';
 import toolsdev3 from '../assets/Abhijit.png';
 
@@ -74,22 +72,13 @@ const Developers = () => {
 
     {
       heading: 'Abhijit Das',
-      subtext: 'At NexaForge, I bring creativity to life through stunning UX/UI and impactful graphic design.',
+      subtext: 'As Co-Founder of NexaForge, I bring creativity to life through stunning UX/UI and impactful graphic design.',
       image: devloper3,
       backgroundClass: 'dev-bg-3',
       headingColor: '#111111',
       subtextColor: '#111111',
       toolImage: toolsdev3,
-    },
-      {
-      heading: 'Pratik Dutta',
-      subtext: 'As Co-Founder of NexaForge, I turn brands into scroll-stoppers with smart social media management.',
-      image: devloper1,
-      backgroundClass: 'dev-bg-1',
-      headingColor: '#111111',
-      subtextColor: '#111111',
-      toolImage: toolsdev1,
-    },
+    }
   ];
 
   // Handle image load
@@ -281,7 +270,7 @@ const Developers = () => {
                       {renderImageWithLoader(
                         card.toolImage,
                         `${card.heading} tools`,
-                        "w-[12rem] h-[12rem] rounded-full object-cover relative -ml-20 -rotate-12",
+                        "w-[12rem] h-[12rem] rounded-full object-cover relative -ml-12 -rotate-12",
                         `mobile-${index}-tool`,
                       
                       )}
@@ -315,14 +304,14 @@ const Developers = () => {
 
   // Desktop Card Render Function
   const renderDesktopCards = () => (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 md:grid-cols-2 gap-2 place-items-center w-full">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 gap-2 place-items-center w-full">
       {developerCards.map((card, index) => (
         <motion.div
           key={index}
           className={`flex flex-col justify-between p-6 rounded-3xl shadow-xl 
             scale-100 transition-transform duration-500 ease-in-out 
             hover:shadow-2xl hover:scale-125 
-            w-full max-w-[30vw] 2xl:h-[55vh] 2xl:w-7xl md:max-w-[30rem] md:h-[25rem] h-80 sm:h-96 lg:h-[25rem] 
+            w-full max-w-[30vw] 2xl:h-[55vh] 2xl:w-7xl md:max-w-[60rem] md:h-[25rem] h-80 sm:h-96 lg:h-[25rem] 
             overflow-hidden group cursor-pointer
             ${card.backgroundClass} button-55`}
           style={getCardStyle(index)}
@@ -334,7 +323,7 @@ const Developers = () => {
           }
           variants={fadeUp}
         >
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 h-full flex flex-col justify-between">
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 h-full  flex lg:flex-row-reverse md:flex-col md:gap-0 lg:gap-10 justify-center items-center">
             <div>
               <h3
                 className="text-2xl 2xl:text-3xl lg:text-3xl sm:text-3xl text-center font-bold mb-4 font-heading"
@@ -349,12 +338,12 @@ const Developers = () => {
                 {card.subtext}
               </p>
             </div>
-            <div className="flex items-end justify-between p-5 w-full">
+            <div className="flex items-end justify-between p-2 w-full">
               <div className="flex-shrink-0 flex">
                 {renderImageWithLoader(
                   card.image,
                   card.heading,
-                  "w-32 sm:w-40 lg:w-48 h-32 sm:h-40 lg:h-48 rounded-full object-cover border-2 border-black",
+                  "w-32 sm:w-40 lg:w-52 h-32 sm:h-40 lg:h-full rounded-md object-cover border-2 border-black",
                   `desktop-${index}-profile`
                 )}
                 {renderImageWithLoader(

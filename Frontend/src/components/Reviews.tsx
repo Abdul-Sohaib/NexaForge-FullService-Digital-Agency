@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { motion } from 'framer-motion';
-import axios from 'axios';
 
 interface Review {
   _id: string;
@@ -23,60 +22,82 @@ export default function Reviews() {
 
   // Fetch reviews from backend
   useEffect(() => {
-    const fetchReviews = async () => {
-      try {
-        const response = await axios.get('https://nexaforge-fullservice-digital-agency-1.onrender.com/api/reviews');
-        // const response = await axios.get('http://localhost:5000/api/reviews');
-        setReviews(response.data.slice(0, 8)); // Limit to 8 reviews
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      } catch (err: any) {
-        setError('Failed to fetch reviews');
-      }
-    };
-    fetchReviews();
-  }, []);
-
-  // Handle review submission
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!user) {
-      setError('You must be logged in to submit a review');
-      return;
-    }
-    if (!heading || !content) {
-      setError('Please fill in all fields');
-      return;
-    }
-
-    setLoading(true);
-    setError('');
-
+  const fetchReviews = async () => {
     try {
-      // Get fresh Firebase ID token
-      const token = await user.getIdToken();
-      const response = await axios.post('https://nexaforge-fullservice-digital-agency-1.onrender.com/api/reviews',
-      // const response = await axios.post('http://localhost:5000/api/reviews',
-        {
-          userId: user.uid,
-          displayName: user.displayName || 'Anonymous',
-          heading,
-          content,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      setReviews((prev) => [response.data, ...prev].slice(0, 8)); // Add new review to top, limit to 8
-      setHeading('');
-      setContent('');
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Failed to submit review');
-    } finally {
-      setLoading(false);
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/reviews`);
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch');
+      }
+
+      const data = await response.json(); // Parse JSON response
+      setReviews(data.slice(0, 8)); // Limit to 8 reviews
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (err) {
+      setError('Failed to fetch reviews');
     }
   };
+
+  fetchReviews();
+}, []);
+
+
+  // Handle review submission
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  if (!user) {
+    setError('You must be logged in to submit a review');
+    return;
+  }
+
+  if (!heading || !content) {
+    setError('Please fill in all fields');
+    return;
+  }
+
+  setLoading(true);
+  setError('');
+
+  try {
+    //  Get fresh Firebase ID token
+    const token = await user.getIdToken();
+
+    //  Make POST request to backend
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/reviews`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        userId: user.uid,
+        displayName: user.displayName || 'Anonymous',
+        heading,
+        content,
+      }),
+    });
+
+    //  Handle failed responses gracefully
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.message || 'Failed to submit review');
+    }
+
+    // Parse response JSON
+    const newReview = await response.json();
+
+    // Update state (prepend new review, limit to 8)
+    setReviews((prev) => [newReview, ...prev].slice(0, 8));
+    setHeading('');
+    setContent('');
+  } catch (err: any) {
+    setError(err.message || 'Failed to submit review');
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   // Animation variants for cards
   const cardVariants = {

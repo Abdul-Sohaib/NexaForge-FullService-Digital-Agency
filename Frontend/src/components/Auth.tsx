@@ -94,15 +94,19 @@ export function Auth() {
   };
 
   return (
-    <div className="h-[90vh] bg-transparent relative overflow-hidden flex flex-col justify-center">
+    <div className="h-screen w-full relative  items-center bg-transparent  flex flex-col justify-center">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-32 w-80 h-80 rounded-full bg-transparent blur-3xl"></div>
         <div className="absolute -bottom-32 -left-40 w-80 h-80 rounded-full bg-transparent blur-3xl"></div>
       </div>
 
-      {/* Back to Dashboard Button */}
-      <div className="absolute top-6 left-6 z-10">
+     
+     
+
+      <div className="relative h-[90vh] flex w-[70vw] justify-center items-center  backdrop-blur-xl bg-white/10 rounded-3xl shadow-2xl border-2 border-black">
+       {/* Back to Dashboard Button */}
+       <div className="absolute top-4 left-4 z-10">
         <Link 
           to="/dashboard" 
           className="inline-flex items-center px-4 py-2 text-sm font-body text-black bg-gradient-to-tr from-[#ffffff] via-[#fdfcf7] to-[#f9f5ec] backdrop-blur-sm hover:bg-white/90 rounded-full shadow-sm border border-black hover:border-black/80 transition-all duration-200 group"
@@ -113,8 +117,6 @@ export function Auth() {
           Back to Dashboard
         </Link>
       </div>
-
-      <div className="relative h-full flex w-full backdrop-blur-xl bg-white/10 rounded-3xl shadow-2xl border-2 border-black">
         {/* Left Side - Illustration */}
         <div className="hidden lg:flex lg:w-1/2 items-center justify-center relative">
           <div className="max-w-sm w-full flex flex-col items-center">

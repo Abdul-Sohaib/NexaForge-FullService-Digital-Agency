@@ -85,8 +85,8 @@ export function Contact({ isOpen, onClose }: ContactProps) {
     const message = formData.get('message') as string;
 
     try {
-      const response = await fetch('https://nexaforge-fullservice-digital-agency-1.onrender.com/api/contact', {
-      // const response = await fetch('http://localhost:5000/api/contact', {
+      // const response = await fetch('https://nexaforge-fullservice-digital-agency-1.onrender.com/api/contact', {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

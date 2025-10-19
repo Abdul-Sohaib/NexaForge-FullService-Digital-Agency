@@ -14,7 +14,7 @@ interface NavbarProps {
 const navLinks = [
   { id: 0, name: 'Dashboard', path: '/dashboard', scrollTarget: null },
   { id: 1, name: 'What We Do', path: '/dashboard', scrollTarget: 'serviceprovide' },
-  { id: 2, name: 'Showcase', path: '/dashboard', scrollTarget: 'socialcard' },
+  { id: 2, name: 'Showcase', path: '/socialcards', scrollTarget: 'socialcard' },
   { id: 3, name: 'Who We Are', path: '/dashboard', scrollTarget: 'developers' },
 ];
 
