@@ -65,8 +65,6 @@ const Developers = () => {
       subtext: 'As Founder of NexaForge, I craft digital experiences through modern websites and apps.',
       image: devloper2,
       backgroundClass: 'dev-bg-2',
-      headingColor: '#111111',
-      subtextColor: '#111111',
       toolImage: toolsdev2,
     },
 
@@ -75,8 +73,6 @@ const Developers = () => {
       subtext: 'As Co-Founder of NexaForge, I bring creativity to life through stunning UX/UI and impactful graphic design.',
       image: devloper3,
       backgroundClass: 'dev-bg-3',
-      headingColor: '#111111',
-      subtextColor: '#111111',
       toolImage: toolsdev3,
     }
   ];
@@ -247,14 +243,12 @@ const Developers = () => {
                 <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 h-full flex flex-col justify-between">
                   <div>
                     <h3
-                      className="text-3xl text-center font-bold mb-4 font-heading"
-                      style={{ color: card.headingColor }}
+                      className="text-3xl text-center font-semibold mb-4 font-heading text-white"
                     >
                       {card.heading}
                     </h3>
                     <p
-                      className="text-md font-body font-semibold leading-relaxed mb-4"
-                      style={{ color: card.subtextColor }}
+                      className="text-md font-body font-regular leading-relaxed mb-4 text-white"
                     >
                       {card.subtext}
                     </p>
@@ -326,14 +320,12 @@ const Developers = () => {
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 h-full  flex lg:flex-row-reverse md:flex-col md:gap-0 lg:gap-10 justify-center items-center">
             <div>
               <h3
-                className="text-2xl 2xl:text-3xl lg:text-3xl sm:text-3xl text-center font-bold mb-4 font-heading"
-                style={{ color: card.headingColor }}
+                className="text-2xl 2xl:text-3xl lg:text-3xl sm:text-3xl text-center font-semibold mb-4 font-heading text-white"
               >
                 {card.heading}
               </h3>
               <p
-                className="text-sm 2xl:text-sm lg:text-sm sm:text-base font-body font-semibold leading-relaxed mb-4"
-                style={{ color: card.subtextColor }}
+                className="text-sm 2xl:text-sm lg:text-sm sm:text-base font-body font-regular leading-relaxed mb-4 text-white"
               >
                 {card.subtext}
               </p>
@@ -403,7 +395,7 @@ const Developers = () => {
           animate={headingControls}
           variants={fadeUp}
         >
-          <h2 className={`${isMobile ? 'text-5xl' : 'text-4xl sm:text-5xl'} z-20 md:text-6xl lg:text-7xl font-bold text-black font-heading text-center leading-tight`}>
+          <h2 className={`${isMobile ? 'text-5xl' : 'text-4xl sm:text-5xl'} z-20 md:text-6xl lg:text-7xl font-bold text-white font-heading text-center leading-tight`}>
             Who We Are
           </h2>
           <img

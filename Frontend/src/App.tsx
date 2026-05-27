@@ -36,9 +36,6 @@ function App() {
       <Routes>
         <Route path="/auth" element={<Auth />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/dashboard" element={<Dashboard />} />
         <Route
           path="/profile"
           element={
@@ -54,6 +51,7 @@ function App() {
         />
         <Route path="/worksamples" element={<WorkSamples />} />
         <Route path="/" element={<Navigate to="/dashboard" replace />} />
+        <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Routes>
     </>
   );

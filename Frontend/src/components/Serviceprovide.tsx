@@ -323,10 +323,14 @@ const Serviceprovide = forwardRef<HTMLDivElement>((_props, ref) => {
 
   return (
     <div ref={sectionRef} className="service-provide-section py-16 bg-transparent">
+         <div className="hero-status-badge">
+            <span className="hero-status-dot" />
+            SERVICES ONLINE 
+          </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.h2
           ref={titleRef}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-black text-center font-heading w-full uppercase"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white text-center font-heading w-full uppercase"
           initial={{ opacity: 0 }}
         >
           What We Do

@@ -94,7 +94,7 @@ export function Auth() {
   };
 
   return (
-    <div className="h-screen w-full relative  items-center bg-transparent  flex flex-col justify-center">
+    <div className="h-screen w-full relative  items-center  flex flex-col justify-center">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-32 w-80 h-80 rounded-full bg-transparent blur-3xl"></div>
@@ -109,7 +109,7 @@ export function Auth() {
        <div className="absolute top-4 left-4 z-10">
         <Link 
           to="/dashboard" 
-          className="inline-flex items-center px-4 py-2 text-sm font-body text-black bg-gradient-to-tr from-[#ffffff] via-[#fdfcf7] to-[#f9f5ec] backdrop-blur-sm hover:bg-white/90 rounded-full shadow-sm border border-black hover:border-black/80 transition-all duration-200 group"
+          className="inline-flex items-center px-4 py-2 text-sm font-body text-black bg-gradient-to-tr from-[#ffffff] via-[#fdfcf7] to-[#f9f5ec] backdrop-blur-sm hover:bg-white/90 rounded-full shadow-sm border border-red-600 hover:border-yellow-400 transition-all duration-200 group"
         >
           <svg className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -163,7 +163,7 @@ export function Auth() {
             <form onSubmit={handleEmailAuth} className="space-y-6">
               {isSignUp && (
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2 text-left font-body">
+                  <label className="block text-sm font-regular text-white mb-2 text-left font-body">
                     Full Name
                   </label>
                   <input
@@ -171,7 +171,7 @@ export function Auth() {
                     value={displayName}
                     onChange={(e) => setDisplayName(e.target.value)}
                     disabled={loading}
-                    className="w-full font-body px-4 py-2.5 border-2 border-black rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200 disabled:opacity-50 placeholder:text-xs"
+                    className="w-full font-body px-4 py-2.5 border-2 border-red-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200 disabled:opacity-50 placeholder:text-xs"
                     placeholder="Enter your full name"
                     required
                   />
@@ -179,7 +179,7 @@ export function Auth() {
               )}
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2 text-left font-body">
+                <label className="block text-sm font-regular text-white mb-2 text-left font-body">
                   {isSignUp ? 'Email' : 'Username Or Email'}
                 </label>
                 <input
@@ -187,14 +187,14 @@ export function Auth() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={loading}
-                  className="w-full font-body px-4 py-2.5 border-2 border-black rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200 disabled:opacity-50 placeholder:text-xs"
+                  className="w-full font-body px-4 py-2.5 border-2 border-red-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200 disabled:opacity-50 placeholder:text-xs"
                   placeholder={isSignUp ? "Enter your email" : "Enter your email or username"}
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2 text-left font-body">
+                <label className="block text-sm font-regular text-white mb-2 text-left font-body">
                   Password
                 </label>
                 <input
@@ -202,7 +202,7 @@ export function Auth() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   disabled={loading}
-                  className="w-full font-body px-4 py-2.5 border-2 border-black rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200 disabled:opacity-50 placeholder:text-xs"
+                  className="w-full font-body px-4 py-2.5 border-2 border-red-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200 disabled:opacity-50 placeholder:text-xs"
                   placeholder="Enter your password"
                   required
                 />
@@ -210,7 +210,7 @@ export function Auth() {
 
               {isSignUp && (
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2 text-left font-body">
+                  <label className="block text-sm font-regular text-white mb-2 text-left font-body">
                     Confirm Password
                   </label>
                   <input
@@ -218,7 +218,7 @@ export function Auth() {
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     disabled={loading}
-                    className="w-full font-body px-4 py-2.5 border-2 border-black rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200 disabled:opacity-50 placeholder:text-xs"
+                    className="w-full font-body px-4 py-2.5 border-2 border-red-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200 disabled:opacity-50 placeholder:text-xs"
                     placeholder="Confirm your password"
                     required
                   />
@@ -248,7 +248,7 @@ export function Auth() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full button-55 px-5 py-3 text-lg font-bold font-body"
+                className="w-full button-55 px-5 py-3 text-lg font-regular font-body text-white"
               >
                 {loading ? (
                   <div className="flex items-center justify-center">
@@ -261,7 +261,7 @@ export function Auth() {
               </button>
 
               <div className="text-center">
-                <span className="text-gray-600 text-sm">
+                <span className="text-white text-sm">
                   {isSignUp ? "Already Have An Account? " : "Don't Have An Account? "}
                 </span>
                 <button
@@ -275,7 +275,7 @@ export function Auth() {
                     setDisplayName('');
                     navigate(`/auth?mode=${!isSignUp ? 'signup' : 'signin'}`, { replace: true });
                   }}
-                  className="text-black/70 hover:text-black font-semibold text-sm transition-colors"
+                  className="text-red-600 hover:text-yellow-400 font-regular text-sm transition-colors"
                 >
                   {isSignUp ? 'Sign In' : 'Click Here'}
                 </button>
@@ -286,7 +286,7 @@ export function Auth() {
                   type="button"
                   onClick={handleGoogleAuth}
                   disabled={loading}
-                  className="w-full px-5 py-2 text-sm font-semibold font-body flex items-center justify-center gap-3 bg-transparent rounded-lg shadow-md border border-black hover:shadow-lg transition"
+                  className="w-full px-5 py-2 text-sm font-regular text-white font-body flex items-center justify-center gap-3 bg-transparent rounded-lg shadow-md border border-red-600 hover:shadow-lg transition"
                 >
                   {loading ? (
                     <>

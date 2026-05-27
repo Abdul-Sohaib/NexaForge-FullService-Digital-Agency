@@ -167,9 +167,9 @@ export function Navbar({ onContactOpen }: NavbarProps) {
   return (
     <div
       ref={navbarRef}
-      className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-tr from-[#ffffff] via-[#fdfcf7] to-[#f9f5ec] rounded-xl overflow-visible shadow-[0_4px_12px_rgba(0,0,0,0.08),0_2px_4px_rgba(0,0,0,0.04)] mt-2 sm:mt-4 md:mt-6 xs:mt-6 mx-2 sm:mx-4 xs:mx-3  "
+      className="fixed top-0 left-0 right-0 z-50 bg-white/10 border-2 border-red-500  rounded-xl overflow-visible shadow-[0_4px_12px_rgba(0,0,0,0.08),0_2px_4px_rgba(0,0,0,0.04)] mt-2 sm:mt-4 md:mt-6 xs:mt-6 mx-2 sm:mx-4 xs:mx-3  "
     >
-      <div className="2xl:px-10 xs:px-6 sm:px-4  lg:px-8 2xl:p-3 lg:p-3 md:px-2 sm:p-0 xs:p-0">
+      <div className="2xl:px-10 xs:px-6 sm:px-4  lg:px-8 2xl:p-3 lg:p-0 md:px-0 sm:p-0 xs:p-0">
         <div className="flex items-center justify-center 2xl:gap-[6rem] lg:gap-[4rem] md:gap-[4rem] sm:gap-[4rem] xs:gap-[5rem] h-12 xs:h-14 sm:h-16 w-full">
           {/* Logo */}
           <div className="flex-shrink-0 flex justify-center items-center">
@@ -181,14 +181,14 @@ export function Navbar({ onContactOpen }: NavbarProps) {
             ref={navRef}
             className={`${
               isMobileMenuOpen ? 'flex' : 'hidden'
-            } md:flex flex-col md:flex-row absolute md:static top-[5rem] left-0 right-0  bg-gradient-to-tr from-[#ffffff] via-[#fdfcf7] to-[#f9f5ec] md:bg-transparent rounded-xl md:rounded-none shadow-md md:shadow-none py-4 md:py-0 px-4 md:px-0 z-40 justify-between lg:space-x-1`}
+            } md:flex flex-col md:flex-row absolute md:static top-[5rem] left-0 right-0 md:bg-transparent rounded-xl md:rounded-none shadow-md md:shadow-none py-4 md:py-0 px-4 md:px-0 z-40 justify-between lg:space-x-1`}
           >
             {navLinks.map((link) => (
               <div key={link.id} className="nav-item  flex relative py-2 md:py-0">
                 {link.scrollTarget ? (
                   <button
                     onClick={(e) => handleNavClick(e, link.scrollTarget)}
-                    className="text-black/70 hover:text-black rounded-xl 2xl:text-sm lg:text-sm xs:text-sm sm:text-[0.9rem] font-extrabold uppercase transition-colors font-heading bg-transparent border-none cursor-pointer md:text-[0.7rem] "
+                    className="text-white hover:text-red-500 rounded-xl 2xl:text-sm lg:text-sm xs:text-sm sm:text-[0.9rem] font-extrabold uppercase transition-colors font-heading bg-transparent border-none cursor-pointer md:text-[0.7rem] "
                     aria-label={`Navigate to ${link.name}`}
                   >
                     {link.name}
@@ -196,7 +196,7 @@ export function Navbar({ onContactOpen }: NavbarProps) {
                 ) : (
                   <Link
                     to={link.path}
-                    className="text-black/70 hover:text-black rounded-xl 2xl:text-sm lg:text-sm md:text-[0.7rem] xs:text-sm sm:text-[0.9rem] font-extrabold uppercase transition-colors font-heading"
+                    className="text-white hover:text-red-500 rounded-xl 2xl:text-sm lg:text-sm md:text-[0.7rem] xs:text-sm sm:text-[0.9rem] font-extrabold uppercase transition-colors font-heading"
                     aria-label={`Navigate to ${link.name}`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
@@ -232,10 +232,10 @@ export function Navbar({ onContactOpen }: NavbarProps) {
           
           <div className="flex items-center space-x-2 sm:space-x-4">
             <button 
-              className="button-56 hover:scale-110 2xl:text-sm lg:text-sm md:text-[0.6rem] sm:text-[0.6rem] xs:text-[0.7rem] 2xl:px-2 lg:px-2 md:px-6 xs:px-3 sm:px-4 py-1"
+              className="button-56 hover:scale-110 2xl:text-sm lg:text-sm md:text-[0.6rem] sm:text-[0.6rem] xs:text-[0.7rem] 2xl:px-2 lg:px-2 md:px-6 xs:px-3 sm:px-4 py-1 "
               onClick={onContactOpen}
             >
-              <span className="text-white hover:text-black uppercase font-heading font-bold">Let's Create</span>
+              <span className="text-white hover:text-black uppercase font-heading font-bold ">Let's Create</span>
             </button>
 
             {/* Mobile menu button */}

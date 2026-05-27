@@ -90,12 +90,16 @@ const Socialcard = () => {
 
   return (
     <div ref={sectionRef} className="w-full min-h-screen relative z-20">
+         <div className="hero-status-badge">
+            <span className="hero-status-dot" />
+            WORKS ONLINE 
+          </div>
       <div>
         <motion.h2
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="text-3xl md:text-5xl lg:text-6xl sm:text-3xl font-bold text-black font-heading text-center mt-12 mb-8"
+          className="text-3xl md:text-5xl lg:text-6xl sm:text-3xl font-bold text-white font-heading text-center mt-12 mb-8"
         >
           Explore Our Work Samples
         </motion.h2>
@@ -195,10 +199,11 @@ const Socialcard = () => {
           initial="hidden"
           animate={buttonControl}
           variants={buttonVariants}
-          className="button-55 px-8 py-4 text-lg font-semibold font-heading text-black bg-transparent hover:bg-black hover:text-white transition-all duration-300"
+          className="hero-btn-primary px-8 py-4 text-lg font-semibold font-heading text-white bg-transparent transition-all duration-300"
           onClick={handleLoadWorkSamples}
         >
           <span>Load Work Samples</span>
+           <span>🚀</span>
         </motion.button>
       </div>
     </div>

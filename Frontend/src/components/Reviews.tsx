@@ -111,8 +111,12 @@ const handleSubmit = async (e: React.FormEvent) => {
 
   return (
     <div className=" px-4 sm:px-6 lg:px-8 bg-transparent">
+         <div className="hero-status-badge">
+            <span className="hero-status-dot" />
+            REVIEWS ONLINE 
+          </div>
       <div className="max-w-7xl mx-auto">
-        <h2 className="2xl:text-7xl lg:text-6xl md:text-5xl sm:text-4xl xs:text-4xl font-bold text-black mb-4 text-center font-heading">
+        <h2 className="2xl:text-7xl lg:text-6xl md:text-5xl sm:text-4xl xs:text-4xl font-bold text-white mb-4 text-center font-heading">
           What Our Community Say
         </h2>
         <p className="2xl:text-lg lg:text-lg md:text-sm sm:text-xs xs:text-sm text-gray-600 mb-12 text-center font-body">
